@@ -51,9 +51,10 @@ class UPGNode:
 @dataclass
 class FileNode(UPGNode):
     """Represents one source file."""
-    loc: int = 0                     # lines of code
-    language: str = ""
-    kind: NodeKind = NodeKind.FILE
+    loc: int = 0
+
+    def __post_init__(self):
+        self.kind = NodeKind.FILE
 
     @classmethod
     def create(cls, file_path: str, language: str, source: str) -> "FileNode":
@@ -66,7 +67,7 @@ class FileNode(UPGNode):
             file_path=file_path,
             start_line=1,
             end_line=loc,
-            raw_source="",   # files don't store full source in the node
+            raw_source="",
             loc=loc,
         )
 
@@ -76,19 +77,23 @@ class FunctionNode(UPGNode):
     """A top-level function or free procedure."""
     parameters: list[str] = field(default_factory=list)
     return_type: Optional[str] = None
-    calls: list[str] = field(default_factory=list)   # names of functions called
+    calls: list[str] = field(default_factory=list)
     docstring: Optional[str] = None
     is_async: bool = False
-    kind: NodeKind = NodeKind.FUNCTION
+
+    def __post_init__(self):
+        self.kind = NodeKind.FUNCTION
 
 
 @dataclass
 class ClassNode(UPGNode):
     """A class or struct definition."""
-    bases: list[str] = field(default_factory=list)   # parent class names
-    methods: list[str] = field(default_factory=list) # method names (resolved later)
+    bases: list[str] = field(default_factory=list)
+    methods: list[str] = field(default_factory=list)
     docstring: Optional[str] = None
-    kind: NodeKind = NodeKind.CLASS
+
+    def __post_init__(self):
+        self.kind = NodeKind.CLASS
 
 
 @dataclass
@@ -100,16 +105,20 @@ class MethodNode(UPGNode):
     calls: list[str] = field(default_factory=list)
     is_async: bool = False
     is_static: bool = False
-    kind: NodeKind = NodeKind.METHOD
+
+    def __post_init__(self):
+        self.kind = NodeKind.METHOD
 
 
 @dataclass
 class ImportNode(UPGNode):
     """An import / include / require / use statement."""
-    source_module: str = ""          # the raw import string
-    resolved_path: Optional[str] = None  # absolute path if resolvable
+    source_module: str = ""
+    resolved_path: Optional[str] = None
     imported_names: list[str] = field(default_factory=list)
-    kind: NodeKind = NodeKind.IMPORT
+
+    def __post_init__(self):
+        self.kind = NodeKind.IMPORT
 
 
 @dataclass
