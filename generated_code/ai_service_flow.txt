@@ -1,0 +1,1 @@
+ai_service.py is imported by itself and relies on os, genai, and dotenv libraries.

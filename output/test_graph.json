@@ -1,0 +1,127 @@
+{
+  "repo_root": "C:\\Users\\krish\\OneDrive\\Desktop\\monolith-mapper\\test_repo",
+  "node_count": 5,
+  "edge_count": 6,
+  "nodes": [
+    {
+      "id": "6b364dfb-32a6-53f7-a99b-f572aaedca21",
+      "name": "sample.py",
+      "language": "python",
+      "file_path": "sample.py",
+      "start_line": 1,
+      "end_line": 11,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 11
+    },
+    {
+      "id": "adedb811-8558-5649-a181-6ae89a5402cc",
+      "name": "PaymentProcessor",
+      "language": "python",
+      "file_path": "sample.py",
+      "start_line": 1,
+      "end_line": 4,
+      "raw_source": "class PaymentProcessor:\r\n    def process(self, amount):\r\n        verify_funds(amount)\r\n        print(\"Processed\")",
+      "kind": "class",
+      "metadata": {},
+      "bases": [],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "51cebd1a-69e1-5ae1-9fdf-8b2ffc45786a",
+      "name": "process",
+      "language": "python",
+      "file_path": "sample.py",
+      "start_line": 2,
+      "end_line": 4,
+      "raw_source": "def process(self, amount):\r\n        verify_funds(amount)\r\n        print(\"Processed\")",
+      "kind": "method",
+      "metadata": {},
+      "parent_class": "PaymentProcessor",
+      "parameters": [
+        "self",
+        "amount"
+      ],
+      "return_type": null,
+      "calls": [
+        "verify_funds",
+        "print"
+      ],
+      "is_async": false,
+      "is_static": false
+    },
+    {
+      "id": "7f09c6ac-3830-5f9b-afc5-a774bfc3ad1d",
+      "name": "verify_funds",
+      "language": "python",
+      "file_path": "sample.py",
+      "start_line": 6,
+      "end_line": 7,
+      "raw_source": "def verify_funds(amount):\r\n    print(\"Verified\")",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [
+        "amount"
+      ],
+      "return_type": null,
+      "calls": [
+        "print"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "77184287-3b0c-56c8-8c4e-497c48e5a45f",
+      "name": "main",
+      "language": "python",
+      "file_path": "sample.py",
+      "start_line": 9,
+      "end_line": 11,
+      "raw_source": "def main():\r\n    processor = PaymentProcessor()\r\n    processor.process(100)",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "PaymentProcessor",
+        "processor.process"
+      ],
+      "docstring": null,
+      "is_async": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "6b364dfb-32a6-53f7-a99b-f572aaedca21",
+      "relation": "CONTAINS",
+      "target": "adedb811-8558-5649-a181-6ae89a5402cc"
+    },
+    {
+      "source": "6b364dfb-32a6-53f7-a99b-f572aaedca21",
+      "relation": "CONTAINS",
+      "target": "51cebd1a-69e1-5ae1-9fdf-8b2ffc45786a"
+    },
+    {
+      "source": "adedb811-8558-5649-a181-6ae89a5402cc",
+      "relation": "CONTAINS",
+      "target": "51cebd1a-69e1-5ae1-9fdf-8b2ffc45786a"
+    },
+    {
+      "source": "6b364dfb-32a6-53f7-a99b-f572aaedca21",
+      "relation": "CONTAINS",
+      "target": "7f09c6ac-3830-5f9b-afc5-a774bfc3ad1d"
+    },
+    {
+      "source": "6b364dfb-32a6-53f7-a99b-f572aaedca21",
+      "relation": "CONTAINS",
+      "target": "77184287-3b0c-56c8-8c4e-497c48e5a45f"
+    },
+    {
+      "source": "51cebd1a-69e1-5ae1-9fdf-8b2ffc45786a",
+      "relation": "CALLS",
+      "target": "7f09c6ac-3830-5f9b-afc5-a774bfc3ad1d"
+    }
+  ]
+}
