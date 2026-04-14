@@ -10,6 +10,9 @@ Run with:  uvicorn api:app --reload --port 8000
 
 from __future__ import annotations
 
+from google.cloud import storage
+import datetime
+
 import logging
 import time
 import uuid
@@ -510,6 +513,36 @@ async def upload_repo_zip(
     except Exception as e:
         logger.error(f"Upload failed: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to process ZIP: {str(e)}")
+    
+@app.post("/generate-upload-url", tags=["Uploads"])
+async def generate_upload_url(
+    filename: str, 
+    current_user: dict = Depends(get_current_user)
+):
+    """Step 1: Gives the frontend a secure URL to upload the file directly to Google."""
+    
+    BUCKET_NAME = "monolith-mapper-uploads-krishna" # Change to your actual bucket name!
+    
+    # Create a unique path in the bucket for this user
+    blob_name = f"uploads/{current_user['username']}/{filename}"
+    
+    # Initialize the Google Cloud client
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(BUCKET_NAME)
+    blob = bucket.blob(blob_name)
+    
+    # Generate the Signed URL (Expires in 15 minutes)
+    url = blob.generate_signed_url(
+        version="v4",
+        expiration=datetime.timedelta(minutes=15),
+        method="PUT",
+        content_type="application/zip" # Force them to only upload zips!
+    )
+    
+    return {
+        "upload_url": url,
+        "bucket_path": blob_name
+    }
 
 @app.post("/index", response_model=IndexResponse, tags=["Indexing"])
 async def index_repo(req: IndexRequest, current_user: dict = Depends(get_current_user)):
