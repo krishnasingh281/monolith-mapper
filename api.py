@@ -566,6 +566,10 @@ async def index_repo(req: IndexRequest, current_user: dict = Depends(get_current
         raise HTTPException(status_code=500, detail=f"Indexing failed: {e}")
     
 
+import os
+import json
+from google.oauth2 import service_account
+
 @app.post("/generate-upload-url", tags=["Uploads"])
 async def generate_upload_url(
     filename: str, 
@@ -573,23 +577,30 @@ async def generate_upload_url(
 ):
     """Step 1: Gives the frontend a secure URL to upload the file directly to Google."""
     
-    # EXACT BUCKET NAME FROM YOUR SCREENSHOT
     BUCKET_NAME = "monolith-mapper-uploads-krishna" 
-    
-    # Create a unique path in the bucket for this user
     blob_name = f"uploads/{current_user['username']}/{filename}"
     
     try:
-        storage_client = storage.Client()
+        # Check if we have the explicit JSON key in the environment
+        creds_json_str = os.getenv("GOOGLE_CREDENTIALS_JSON")
+        
+        if creds_json_str:
+            # We are in production, use the injected key
+            creds_info = json.loads(creds_json_str)
+            credentials = service_account.Credentials.from_service_account_info(creds_info)
+            storage_client = storage.Client(credentials=credentials)
+        else:
+            # Fallback for local testing (assuming gcloud auth is run)
+            storage_client = storage.Client()
+
         bucket = storage_client.bucket(BUCKET_NAME)
         blob = bucket.blob(blob_name)
         
-        # Generate the Signed URL (Expires in 15 minutes)
         url = blob.generate_signed_url(
             version="v4",
             expiration=datetime.timedelta(minutes=15),
             method="PUT",
-            content_type="application/zip" # Force them to only upload zips
+            content_type="application/zip"
         )
         
         return {
@@ -599,7 +610,6 @@ async def generate_upload_url(
     except Exception as e:
         logger.error(f"Failed to generate URL: {e}")
         raise HTTPException(status_code=500, detail="Could not generate upload URL.")
-
 @app.post("/process-bucket-upload", tags=["Uploads"])
 async def process_bucket_upload(
     bucket_path: str,
