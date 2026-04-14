@@ -514,35 +514,7 @@ async def upload_repo_zip(
         logger.error(f"Upload failed: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to process ZIP: {str(e)}")
     
-@app.post("/generate-upload-url", tags=["Uploads"])
-async def generate_upload_url(
-    filename: str, 
-    current_user: dict = Depends(get_current_user)
-):
-    """Step 1: Gives the frontend a secure URL to upload the file directly to Google."""
-    
-    BUCKET_NAME = "monolith-mapper-uploads-krishna" # Change to your actual bucket name!
-    
-    # Create a unique path in the bucket for this user
-    blob_name = f"uploads/{current_user['username']}/{filename}"
-    
-    # Initialize the Google Cloud client
-    storage_client = storage.Client()
-    bucket = storage_client.bucket(BUCKET_NAME)
-    blob = bucket.blob(blob_name)
-    
-    # Generate the Signed URL (Expires in 15 minutes)
-    url = blob.generate_signed_url(
-        version="v4",
-        expiration=datetime.timedelta(minutes=15),
-        method="PUT",
-        content_type="application/zip" # Force them to only upload zips!
-    )
-    
-    return {
-        "upload_url": url,
-        "bucket_path": blob_name
-    }
+
 
 @app.post("/index", response_model=IndexResponse, tags=["Indexing"])
 async def index_repo(req: IndexRequest, current_user: dict = Depends(get_current_user)):
@@ -592,3 +564,87 @@ async def index_repo(req: IndexRequest, current_user: dict = Depends(get_current
     except Exception as e:
         logger.error(f"Pipeline failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Indexing failed: {e}")
+    
+
+@app.post("/generate-upload-url", tags=["Uploads"])
+async def generate_upload_url(
+    filename: str, 
+    current_user: dict = Depends(get_current_user)
+):
+    """Step 1: Gives the frontend a secure URL to upload the file directly to Google."""
+    
+    # EXACT BUCKET NAME FROM YOUR SCREENSHOT
+    BUCKET_NAME = "monolith-mapper-uploads-krishna" 
+    
+    # Create a unique path in the bucket for this user
+    blob_name = f"uploads/{current_user['username']}/{filename}"
+    
+    try:
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(BUCKET_NAME)
+        blob = bucket.blob(blob_name)
+        
+        # Generate the Signed URL (Expires in 15 minutes)
+        url = blob.generate_signed_url(
+            version="v4",
+            expiration=datetime.timedelta(minutes=15),
+            method="PUT",
+            content_type="application/zip" # Force them to only upload zips
+        )
+        
+        return {
+            "upload_url": url,
+            "bucket_path": blob_name
+        }
+    except Exception as e:
+        logger.error(f"Failed to generate URL: {e}")
+        raise HTTPException(status_code=500, detail="Could not generate upload URL.")
+
+@app.post("/process-bucket-upload", tags=["Uploads"])
+async def process_bucket_upload(
+    bucket_path: str,
+    current_user: dict = Depends(get_current_user)
+):
+    """Step 3: Downloads the file from the bucket to the server and unzips it."""
+    
+    # Security check
+    if current_user["username"] not in bucket_path:
+        raise HTTPException(status_code=403, detail="Unauthorized path.")
+
+    BUCKET_NAME = "monolith-mapper-uploads-krishna"
+    
+    try:
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(BUCKET_NAME)
+        blob = bucket.blob(bucket_path)
+        
+        # Create a local folder to hold the downloaded ZIP
+        local_dir = Path("uploads") / current_user["username"] / "temp_download"
+        local_dir.mkdir(parents=True, exist_ok=True)
+        local_zip_path = local_dir / "repo.zip"
+        extract_path = local_dir / "extracted_code"
+        
+        # Download from bucket to server memory
+        blob.download_to_filename(local_zip_path)
+        
+        # Unzip it
+        shutil.unpack_archive(str(local_zip_path), str(extract_path))
+        
+        # Find the root folder inside the zip
+        extracted_items = list(extract_path.iterdir())
+        final_repo_path = str(extract_path)
+        if len(extracted_items) == 1 and extracted_items[0].is_dir():
+            final_repo_path = str(extracted_items[0])
+            
+        # Cleanup: Delete the ZIP from the Bucket to save money
+        blob.delete()
+        
+        return {
+            "status": "success",
+            "message": "Downloaded from bucket and unzipped.",
+            "repo_path": final_repo_path 
+        }
+        
+    except Exception as e:
+        logger.error(f"Failed to process bucket file: {e}")
+        raise HTTPException(status_code=500, detail="Failed to process cloud file.")
