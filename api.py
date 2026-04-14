@@ -38,7 +38,7 @@ from ingestion.pipeline import run_stage1
 from ingestion.indexer import GraphEnricher
 
 # ── LangChain 1.x compatible imports ─────────────────────────────────────────
-from langchain_ollama import ChatOllama
+from langchain_groq import ChatGroq
 from langchain_qdrant import QdrantVectorStore
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
@@ -72,8 +72,8 @@ class Settings:
     QDRANT_API_KEY: str     = os.getenv("QDRANT_API_KEY", "")
     QDRANT_COLLECTION: str  = "monolith_mapper_v2"
 
-    OLLAMA_BASE_URL: str    = "http://localhost:11434"
-    OLLAMA_MODEL: str       = "llama3.1:8b"
+    GROQ_API_KEY: str       = os.getenv("GROQ_API_KEY", "")
+    GROQ_MODEL: str         = "llama-3.1-70b-versatile"
 
     AGENT_TEMPERATURE: float  = 0.1
     MAX_HISTORY_MESSAGES: int = 20
@@ -94,7 +94,7 @@ settings = Settings()
 class AppState:
     qdrant_client:     Optional[QdrantClient]       = None
     vector_store:      Optional[QdrantVectorStore]  = None
-    llm:               Optional[ChatOllama]          = None
+    llm:               Optional[ChatGroq]            = None
     embeddings:        Optional[FastEmbedEmbeddings] = None
     is_ready:          bool                         = False
     session_histories: dict[str, ChatMessageHistory] = {}
@@ -156,12 +156,12 @@ async def lifespan(app: FastAPI):
 
     # 4. LLM
     try:
-        state.llm = ChatOllama(
-            base_url=settings.OLLAMA_BASE_URL,
-            model=settings.OLLAMA_MODEL,
+        state.llm = ChatGroq(
+            groq_api_key=settings.GROQ_API_KEY,
+            model_name=settings.GROQ_MODEL,
             temperature=settings.AGENT_TEMPERATURE,
         )
-        logger.info(f"LLM ready: {settings.OLLAMA_MODEL}")
+        logger.info(f"LLM ready: Groq {settings.GROQ_MODEL}")
     except Exception as e:
         logger.error(f"LLM failed: {e}")
 
