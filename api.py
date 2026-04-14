@@ -14,14 +14,17 @@ from google.cloud import storage
 import datetime
 
 import logging
+import os
 import time
 import uuid
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Optional
 from datetime import timedelta
+import json
+import shutil
 
-from fastapi import FastAPI, HTTPException, Request, status, Depends
+from fastapi import FastAPI, HTTPException, Request, status, Depends, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordRequestForm
@@ -44,9 +47,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories import ChatMessageHistory
 from qdrant_client import QdrantClient
 
-from fastapi import FastAPI, HTTPException, Request, status, Depends, UploadFile, File
-import shutil
-import os
+from google.oauth2 import service_account
 
 # ── Langfuse observability (optional) ────────────────────────────────────────
 try:
@@ -66,8 +67,9 @@ logging.basicConfig(
 # ══════════════════════════════════════════════════════════════════════════════
 
 class Settings:
-    QDRANT_HOST: str        = "localhost"
-    QDRANT_PORT: int        = 6333
+    # Pull directly from Cloud Run Environment Variables!
+    QDRANT_URL: str         = os.getenv("QDRANT_HOST", "localhost")
+    QDRANT_API_KEY: str     = os.getenv("QDRANT_API_KEY", "")
     QDRANT_COLLECTION: str  = "monolith_mapper_v2"
 
     OLLAMA_BASE_URL: str    = "http://localhost:11434"
@@ -110,12 +112,18 @@ async def lifespan(app: FastAPI):
 
     # 1. Qdrant
     try:
-        state.qdrant_client = QdrantClient(
-            host=settings.QDRANT_HOST,
-            port=settings.QDRANT_PORT,
-        )
+        if settings.QDRANT_URL != "localhost" and "http" in settings.QDRANT_URL:
+            # PRODUCTION: Connect to Qdrant Cloud using the injected keys
+            state.qdrant_client = QdrantClient(
+                url=settings.QDRANT_URL,
+                api_key=settings.QDRANT_API_KEY,
+            )
+        else:
+            # LOCAL FALLBACK
+            state.qdrant_client = QdrantClient(host="localhost", port=6333)
+
         state.qdrant_client.get_collections()
-        logger.info(f"Qdrant connected at {settings.QDRANT_HOST}:{settings.QDRANT_PORT}")
+        logger.info(f"Qdrant connected to {settings.QDRANT_URL}")
     except Exception as e:
         logger.warning(f"Qdrant not available: {e} — /chat will still work without RAG")
 
@@ -204,6 +212,15 @@ def _write_file(filename: str, code: str) -> str:
     except Exception as e:
         logger.error(f"write_file failed: {e}")
         return ""
+
+def _get_storage_client() -> storage.Client:
+    """Returns a Google Cloud Storage client, using injected credentials in production."""
+    creds_json_str = os.getenv("GOOGLE_CREDENTIALS_JSON")
+    if creds_json_str:
+        creds_info = json.loads(creds_json_str)
+        credentials = service_account.Credentials.from_service_account_info(creds_info)
+        return storage.Client(credentials=credentials)
+    return storage.Client()
 
 # ══════════════════════════════════════════════════════════════════════════════
 # SECTION 5 — CHAIN BUILDER
@@ -345,7 +362,7 @@ async def health():
         active_sessions=len(state.session_histories),
     )
 
-# --- NEW: LOGIN ENDPOINT ---
+# --- LOGIN ENDPOINT ---
 @app.post("/login", tags=["Authentication"])
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     """Validates user credentials and hands out a JWT Token"""
@@ -362,14 +379,11 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 @app.post("/signup", tags=["Authentication"])
 async def sign_up(user_data: UserCreate):
     """Registers a brand new user into the database."""
-    # 1. Check if the username already exists
     if user_data.username in fake_users_db:
         raise HTTPException(status_code=400, detail="Username is already taken")
     
-    # 2. Securely hash their password
     hashed_password = pwd_context.hash(user_data.password)
     
-    # 3. Save them to our "database"
     fake_users_db[user_data.username] = {
         "username": user_data.username,
         "full_name": user_data.full_name,
@@ -471,11 +485,9 @@ async def upload_repo_zip(
 ):
     """Takes a ZIP file, unzips it securely, and returns the path to the code."""
     
-    # 1. Validate it is a ZIP file
     if not file.filename.endswith('.zip'):
         raise HTTPException(status_code=400, detail="Only .zip files are allowed.")
         
-    # 2. Create a unique, safe directory for this user's upload
     upload_id = str(uuid.uuid4())[:8]
     user_dir = Path("uploads") / current_user["username"] / upload_id
     user_dir.mkdir(parents=True, exist_ok=True)
@@ -484,36 +496,30 @@ async def upload_repo_zip(
     extract_path = user_dir / "extracted_code"
     
     try:
-        # 3. Save the uploaded ZIP file to disk
         logger.info(f"Receiving ZIP from {current_user['username']}...")
         with open(zip_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
             
-        # 4. Unzip the file
         logger.info(f"Unzipping {file.filename}...")
         shutil.unpack_archive(str(zip_path), str(extract_path))
         
-        # 5. Cleanup the original zip to save disk space
         os.remove(zip_path)
         
-        # 6. Find the actual repo folder inside (sometimes zips have a root folder)
         extracted_items = list(extract_path.iterdir())
         final_repo_path = str(extract_path)
         
-        # If the zip just contained one root folder (like GitHub zips do), point to that
         if len(extracted_items) == 1 and extracted_items[0].is_dir():
             final_repo_path = str(extracted_items[0])
             
         return {
             "status": "success",
             "message": "Repository uploaded and unzipped successfully.",
-            "repo_path": final_repo_path  # <--- Pass THIS to the /index endpoint!
+            "repo_path": final_repo_path
         }
         
     except Exception as e:
         logger.error(f"Upload failed: {e}")
         raise HTTPException(status_code=500, detail=f"Failed to process ZIP: {str(e)}")
-    
 
 
 @app.post("/index", response_model=IndexResponse, tags=["Indexing"])
@@ -528,16 +534,13 @@ async def index_repo(req: IndexRequest, current_user: dict = Depends(get_current
     logger.info(f"User {current_user['username']} started indexing {repo_path.name}...")
 
     try:
-        # 1. Run Stage 1 (Extract AST Graph)
         graph_out_path = f"output/{repo_path.name}_graph.json"
         logger.info(f"Running AST extraction on {repo_path}...")
         graph = run_stage1(str(repo_path), graph_out_path)
 
-        # 2. Run Stage 2 (Enrich the Graph Data)
         logger.info("Enriching nodes with topological context...")
         enricher = GraphEnricher(graph_out_path)
 
-        # 3. Format Data for LangChain VectorStore
         texts = []
         metadatas = []
         ids = []
@@ -552,7 +555,6 @@ async def index_repo(req: IndexRequest, current_user: dict = Depends(get_current
             })
             ids.append(node_id)
 
-        # 4. Inject straight into the live Qdrant Server database
         logger.info(f"Indexing {len(texts)} chunks into Qdrant server...")
         state.vector_store.add_texts(texts=texts, metadatas=metadatas, ids=ids)
 
@@ -564,11 +566,7 @@ async def index_repo(req: IndexRequest, current_user: dict = Depends(get_current
     except Exception as e:
         logger.error(f"Pipeline failed: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Indexing failed: {e}")
-    
 
-import os
-import json
-from google.oauth2 import service_account
 
 @app.post("/generate-upload-url", tags=["Uploads"])
 async def generate_upload_url(
@@ -581,18 +579,7 @@ async def generate_upload_url(
     blob_name = f"uploads/{current_user['username']}/{filename}"
     
     try:
-        # Check if we have the explicit JSON key in the environment
-        creds_json_str = os.getenv("GOOGLE_CREDENTIALS_JSON")
-        
-        if creds_json_str:
-            # We are in production, use the injected key
-            creds_info = json.loads(creds_json_str)
-            credentials = service_account.Credentials.from_service_account_info(creds_info)
-            storage_client = storage.Client(credentials=credentials)
-        else:
-            # Fallback for local testing (assuming gcloud auth is run)
-            storage_client = storage.Client()
-
+        storage_client = _get_storage_client()
         bucket = storage_client.bucket(BUCKET_NAME)
         blob = bucket.blob(blob_name)
         
@@ -610,6 +597,8 @@ async def generate_upload_url(
     except Exception as e:
         logger.error(f"Failed to generate URL: {e}")
         raise HTTPException(status_code=500, detail="Could not generate upload URL.")
+
+
 @app.post("/process-bucket-upload", tags=["Uploads"])
 async def process_bucket_upload(
     bucket_path: str,
@@ -617,36 +606,30 @@ async def process_bucket_upload(
 ):
     """Step 3: Downloads the file from the bucket to the server and unzips it."""
     
-    # Security check
     if current_user["username"] not in bucket_path:
         raise HTTPException(status_code=403, detail="Unauthorized path.")
 
     BUCKET_NAME = "monolith-mapper-uploads-krishna"
     
     try:
-        storage_client = storage.Client()
+        storage_client = _get_storage_client()
         bucket = storage_client.bucket(BUCKET_NAME)
         blob = bucket.blob(bucket_path)
         
-        # Create a local folder to hold the downloaded ZIP
         local_dir = Path("uploads") / current_user["username"] / "temp_download"
         local_dir.mkdir(parents=True, exist_ok=True)
         local_zip_path = local_dir / "repo.zip"
         extract_path = local_dir / "extracted_code"
         
-        # Download from bucket to server memory
         blob.download_to_filename(local_zip_path)
         
-        # Unzip it
         shutil.unpack_archive(str(local_zip_path), str(extract_path))
         
-        # Find the root folder inside the zip
         extracted_items = list(extract_path.iterdir())
         final_repo_path = str(extract_path)
         if len(extracted_items) == 1 and extracted_items[0].is_dir():
             final_repo_path = str(extracted_items[0])
             
-        # Cleanup: Delete the ZIP from the Bucket to save money
         blob.delete()
         
         return {
