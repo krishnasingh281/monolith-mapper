@@ -73,7 +73,7 @@ class Settings:
     QDRANT_COLLECTION: str  = "monolith_mapper_v2"
 
     GROQ_API_KEY: str       = os.getenv("GROQ_API_KEY", "")
-    GROQ_MODEL: str         = "llama-3.1-70b-versatile"
+    GROQ_MODEL: str   = "llama-3.3-70b-versatile"
 
     AGENT_TEMPERATURE: float  = 0.1
     MAX_HISTORY_MESSAGES: int = 20
