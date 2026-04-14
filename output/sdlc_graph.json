@@ -4,46 +4,6 @@
   "edge_count": 334,
   "nodes": [
     {
-      "id": "73b34c12-78de-5b47-9aab-0c1a47dfa511",
-      "name": "extensions.py",
-      "language": "python",
-      "file_path": "extensions.py",
-      "start_line": 1,
-      "end_line": 9,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 9
-    },
-    {
-      "id": "c5f2cc5f-d06f-55c2-98bc-b4bc04e63cd1",
-      "name": "from flask_sqlalchemy import SQLAlchemy",
-      "language": "python",
-      "file_path": "extensions.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "from flask_sqlalchemy import SQLAlchemy",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from flask_sqlalchemy import SQLAlchemy",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "66297b71-838c-5573-b201-29e280901fc3",
-      "name": "from flask_migrate import Migrate",
-      "language": "python",
-      "file_path": "extensions.py",
-      "start_line": 2,
-      "end_line": 2,
-      "raw_source": "from flask_migrate import Migrate",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from flask_migrate import Migrate",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
       "id": "57db28b4-fd98-5b9e-9108-6e18050582ff",
       "name": "ai_service.py",
       "language": "python",
@@ -146,278 +106,24 @@
       "is_async": false
     },
     {
-      "id": "516e2b2e-8b1a-5896-b2ce-157a6ef0caee",
-      "name": "models.py",
+      "id": "73b34c12-78de-5b47-9aab-0c1a47dfa511",
+      "name": "extensions.py",
       "language": "python",
-      "file_path": "models.py",
+      "file_path": "extensions.py",
       "start_line": 1,
-      "end_line": 73,
+      "end_line": 9,
       "raw_source": "",
       "kind": "file",
       "metadata": {},
-      "loc": 73
+      "loc": 9
     },
     {
-      "id": "1ebfebe0-8188-5c23-bb95-c53a5d37873a",
-      "name": "from extensions import db",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "from extensions import db",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from extensions import db",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "ef9e256a-e86e-5dec-83f4-36fea3845915",
-      "name": "from datetime import datetime, timezone",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 2,
-      "end_line": 2,
-      "raw_source": "from datetime import datetime, timezone",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from datetime import datetime, timezone",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "dcb88026-7c67-589b-8001-fe3471d5962f",
-      "name": "import json",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 3,
-      "end_line": 3,
-      "raw_source": "import json",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "import json",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "79b32108-2ebb-5ad4-9cdb-9690f7eb370e",
-      "name": "User",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 7,
-      "end_line": 14,
-      "raw_source": "class User(db.Model):\r\n    id = db.Column(db.Integer, primary_key=True)\r\n    username = db.Column(db.String(80), unique=True, nullable=False)\r\n    # This 'relationship' links this User to all their Pr",
-      "kind": "class",
-      "metadata": {},
-      "bases": [],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "d4ab96ab-eb58-5a06-a3e2-2394ad5c3562",
-      "name": "__repr__",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 13,
-      "end_line": 14,
-      "raw_source": "def __repr__(self):\r\n        return f'<User {self.username}>'",
-      "kind": "method",
-      "metadata": {},
-      "parent_class": "User",
-      "parameters": [
-        "self"
-      ],
-      "return_type": null,
-      "calls": [],
-      "is_async": false,
-      "is_static": false
-    },
-    {
-      "id": "c0e4f191-929f-58ac-894c-1854058a7678",
-      "name": "Project",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 16,
-      "end_line": 34,
-      "raw_source": "class Project(db.Model):\r\n    id = db.Column(db.Integer, primary_key=True)\r\n    name = db.Column(db.String(120), nullable=False)\r\n    created_at = db.Column(db.DateTime, default=lambda: datetime.now(t",
-      "kind": "class",
-      "metadata": {},
-      "bases": [],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "97388f05-5558-56ae-9cc7-f21617e6638b",
-      "name": "to_dict",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 27,
-      "end_line": 34,
-      "raw_source": "def to_dict(self):\r\n        \"\"\"Returns a dictionary representation for API responses.\"\"\"\r\n        return {\r\n            \"id\": self.id,\r\n            \"name\": self.name,\r\n            \"created_at\": self.created_at.isoformat(),\r\n            \"user_id\": self.user_id\r\n        }",
-      "kind": "method",
-      "metadata": {},
-      "parent_class": "Project",
-      "parameters": [
-        "self"
-      ],
-      "return_type": null,
-      "calls": [
-        "self.created_at.isoformat"
-      ],
-      "is_async": false,
-      "is_static": false
-    },
-    {
-      "id": "d2fad4b0-ebf0-561e-a3ba-aab815a9ab6b",
-      "name": "Analysis",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 36,
-      "end_line": 72,
-      "raw_source": "class Analysis(db.Model):\r\n    id = db.Column(db.Integer, primary_key=True)\r\n    \r\n    # This 'ForeignKey' links this Analysis to a specific Project's id.\r\n    project_id = db.Column(db.Integer, db.Fo",
-      "kind": "class",
-      "metadata": {},
-      "bases": [],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "f1f51c00-335d-5af0-b3e8-fe5b938496ae",
-      "name": "input_data",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 52,
-      "end_line": 56,
-      "raw_source": "def input_data(self):\r\n        \"\"\"Loads the JSON string from the DB as a Python dict.\"\"\"\r\n        if self._input_data_json is None:\r\n            return {}\r\n        return json.loads(self._input_data_json)",
-      "kind": "method",
-      "metadata": {},
-      "parent_class": "Analysis",
-      "parameters": [
-        "self"
-      ],
-      "return_type": null,
-      "calls": [
-        "json.loads"
-      ],
-      "is_async": false,
-      "is_static": false
-    },
-    {
-      "id": "9754c284-4d1b-5d4f-b0f9-1831f3123400",
-      "name": "input_data",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 59,
-      "end_line": 61,
-      "raw_source": "def input_data(self, value):\r\n        \"\"\"Saves a Python dict as a JSON string in the DB.\"\"\"\r\n        self._input_data_json = json.dumps(value)",
-      "kind": "method",
-      "metadata": {},
-      "parent_class": "Analysis",
-      "parameters": [
-        "self",
-        "value"
-      ],
-      "return_type": null,
-      "calls": [
-        "json.dumps"
-      ],
-      "is_async": false,
-      "is_static": false
-    },
-    {
-      "id": "bf03c5ea-9c00-507a-8246-b59d1e22685b",
-      "name": "to_dict",
-      "language": "python",
-      "file_path": "models.py",
-      "start_line": 63,
-      "end_line": 72,
-      "raw_source": "def to_dict(self):\r\n        \"\"\"Returns a dictionary representation for API responses.\"\"\"\r\n        return {\r\n            \"id\": self.id,\r\n            \"project_id\": self.project_id,\r\n            \"analysis_type\": self.analysis_type,\r\n            \"input_data\": self.input_data, # Uses the @property\r\n            \"generated_content\": self.generated_content,\r\n            \"timestamp\": self.timestamp.isoformat()\r\n        }",
-      "kind": "method",
-      "metadata": {},
-      "parent_class": "Analysis",
-      "parameters": [
-        "self"
-      ],
-      "return_type": null,
-      "calls": [
-        "self.timestamp.isoformat"
-      ],
-      "is_async": false,
-      "is_static": false
-    },
-    {
-      "id": "bc62d509-121d-588b-ac51-82505ebf0fa9",
-      "name": "app\\main.py",
-      "language": "python",
-      "file_path": "app\\main.py",
-      "start_line": 1,
-      "end_line": 12,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 12
-    },
-    {
-      "id": "b55961b2-7021-50a6-9556-629f49a9e137",
-      "name": "import os",
-      "language": "python",
-      "file_path": "app\\main.py",
-      "start_line": 2,
-      "end_line": 2,
-      "raw_source": "import os",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "import os",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "7ca51e7e-6ba2-5f91-add7-d337d4f39fa1",
-      "name": "from app import create_app",
-      "language": "python",
-      "file_path": "app\\main.py",
-      "start_line": 3,
-      "end_line": 3,
-      "raw_source": "from app import create_app",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app import create_app",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
-      "name": "app\\db.py",
-      "language": "python",
-      "file_path": "app\\db.py",
-      "start_line": 1,
-      "end_line": 24,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 24
-    },
-    {
-      "id": "04a92bc5-273e-5945-a504-77eaa463ce72",
-      "name": "import os",
-      "language": "python",
-      "file_path": "app\\db.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "import os",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "import os",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "0d463cc3-8fef-56e6-b431-8764f5c0b277",
+      "id": "c5f2cc5f-d06f-55c2-98bc-b4bc04e63cd1",
       "name": "from flask_sqlalchemy import SQLAlchemy",
       "language": "python",
-      "file_path": "app\\db.py",
-      "start_line": 2,
-      "end_line": 2,
+      "file_path": "extensions.py",
+      "start_line": 1,
+      "end_line": 1,
       "raw_source": "from flask_sqlalchemy import SQLAlchemy",
       "kind": "import",
       "metadata": {},
@@ -426,55 +132,18 @@
       "imported_names": []
     },
     {
-      "id": "c677868f-d054-5286-8357-6dba091e1095",
-      "name": "from sqlalchemy.orm import DeclarativeBase",
+      "id": "66297b71-838c-5573-b201-29e280901fc3",
+      "name": "from flask_migrate import Migrate",
       "language": "python",
-      "file_path": "app\\db.py",
-      "start_line": 3,
-      "end_line": 3,
-      "raw_source": "from sqlalchemy.orm import DeclarativeBase",
+      "file_path": "extensions.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "from flask_migrate import Migrate",
       "kind": "import",
       "metadata": {},
-      "source_module": "from sqlalchemy.orm import DeclarativeBase",
+      "source_module": "from flask_migrate import Migrate",
       "resolved_path": null,
       "imported_names": []
-    },
-    {
-      "id": "e342ecfd-948e-5601-8c59-92d640f082c0",
-      "name": "Base",
-      "language": "python",
-      "file_path": "app\\db.py",
-      "start_line": 6,
-      "end_line": 7,
-      "raw_source": "class Base(DeclarativeBase):\r\n    pass",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "DeclarativeBase"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "f36c824d-878c-544c-8f32-7c9ecd73bb59",
-      "name": "init_db",
-      "language": "python",
-      "file_path": "app\\db.py",
-      "start_line": 21,
-      "end_line": 24,
-      "raw_source": "def init_db(app):\r\n    # Tables are created only if they don't already exist.\r\n    with app.app_context():\r\n        db.create_all()",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [
-        "app"
-      ],
-      "return_type": null,
-      "calls": [
-        "app.app_context",
-        "db.create_all"
-      ],
-      "docstring": null,
-      "is_async": false
     },
     {
       "id": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
@@ -710,105 +379,295 @@
       "is_async": false
     },
     {
-      "id": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
-      "name": "tests\\test_design.py",
+      "id": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
+      "name": "app\\db.py",
       "language": "python",
-      "file_path": "tests\\test_design.py",
+      "file_path": "app\\db.py",
       "start_line": 1,
-      "end_line": 48,
+      "end_line": 24,
       "raw_source": "",
       "kind": "file",
       "metadata": {},
-      "loc": 48
+      "loc": 24
     },
     {
-      "id": "1a2cfcc2-4dcd-581e-a21e-10f52a3fde0d",
-      "name": "import os, json",
+      "id": "04a92bc5-273e-5945-a504-77eaa463ce72",
+      "name": "import os",
       "language": "python",
-      "file_path": "tests\\test_design.py",
+      "file_path": "app\\db.py",
       "start_line": 1,
       "end_line": 1,
-      "raw_source": "import os, json",
+      "raw_source": "import os",
       "kind": "import",
       "metadata": {},
-      "source_module": "import os, json",
+      "source_module": "import os",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "68935925-7b77-5092-bbea-23c3ad83d138",
-      "name": "from app import create_app",
+      "id": "0d463cc3-8fef-56e6-b431-8764f5c0b277",
+      "name": "from flask_sqlalchemy import SQLAlchemy",
       "language": "python",
-      "file_path": "tests\\test_design.py",
+      "file_path": "app\\db.py",
       "start_line": 2,
       "end_line": 2,
-      "raw_source": "from app import create_app",
+      "raw_source": "from flask_sqlalchemy import SQLAlchemy",
       "kind": "import",
       "metadata": {},
-      "source_module": "from app import create_app",
+      "source_module": "from flask_sqlalchemy import SQLAlchemy",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "6f36c29e-931d-5b9f-b607-a35e9a76b06d",
-      "name": "test_design_200",
+      "id": "c677868f-d054-5286-8357-6dba091e1095",
+      "name": "from sqlalchemy.orm import DeclarativeBase",
       "language": "python",
-      "file_path": "tests\\test_design.py",
-      "start_line": 4,
-      "end_line": 47,
-      "raw_source": "def test_design_200(monkeypatch):\r\n    monkeypatch.setenv(\"API_KEY\", \"supersecret123\")\r\n\r\n    # stub LLM so test is deterministic\r\n    from app.core import llm\r\n    def fake_gemini(_):\r\n        return json.dumps({\r\n            \"version\":\"1.0\",\r\n            \"summary\":\"Two viable options for the stated goals.\",\r\n            \"options\":[\r\n                {\r\n                    \"name\":\"Simple 3-tier\",\r\n                    \"when_to_use\":\"Small team, moderate traffic.\",\r\n                    \"key_compon",
+      "file_path": "app\\db.py",
+      "start_line": 3,
+      "end_line": 3,
+      "raw_source": "from sqlalchemy.orm import DeclarativeBase",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from sqlalchemy.orm import DeclarativeBase",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "e342ecfd-948e-5601-8c59-92d640f082c0",
+      "name": "Base",
+      "language": "python",
+      "file_path": "app\\db.py",
+      "start_line": 6,
+      "end_line": 7,
+      "raw_source": "class Base(DeclarativeBase):\r\n    pass",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "DeclarativeBase"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "f36c824d-878c-544c-8f32-7c9ecd73bb59",
+      "name": "init_db",
+      "language": "python",
+      "file_path": "app\\db.py",
+      "start_line": 21,
+      "end_line": 24,
+      "raw_source": "def init_db(app):\r\n    # Tables are created only if they don't already exist.\r\n    with app.app_context():\r\n        db.create_all()",
       "kind": "function",
       "metadata": {},
       "parameters": [
-        "monkeypatch"
+        "app"
       ],
       "return_type": null,
       "calls": [
-        "monkeypatch.setenv",
-        "json.dumps",
-        "monkeypatch.setattr",
-        "create_app",
-        "app.test_client",
-        "client.post",
-        "res.get_json",
-        "len"
+        "app.app_context",
+        "db.create_all"
       ],
       "docstring": null,
       "is_async": false
     },
     {
-      "id": "e4b3aa38-dcbc-5f57-8d0a-c51fa48ad388",
-      "name": "from app.core import llm",
+      "id": "516e2b2e-8b1a-5896-b2ce-157a6ef0caee",
+      "name": "models.py",
       "language": "python",
-      "file_path": "tests\\test_design.py",
-      "start_line": 8,
-      "end_line": 8,
-      "raw_source": "from app.core import llm",
+      "file_path": "models.py",
+      "start_line": 1,
+      "end_line": 73,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 73
+    },
+    {
+      "id": "1ebfebe0-8188-5c23-bb95-c53a5d37873a",
+      "name": "from extensions import db",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 1,
+      "end_line": 1,
+      "raw_source": "from extensions import db",
       "kind": "import",
       "metadata": {},
-      "source_module": "from app.core import llm",
+      "source_module": "from extensions import db",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "a0ae121a-df95-56e8-9b26-6bc46ec793b4",
-      "name": "fake_gemini",
+      "id": "ef9e256a-e86e-5dec-83f4-36fea3845915",
+      "name": "from datetime import datetime, timezone",
       "language": "python",
-      "file_path": "tests\\test_design.py",
-      "start_line": 9,
-      "end_line": 32,
-      "raw_source": "def fake_gemini(_):\r\n        return json.dumps({\r\n            \"version\":\"1.0\",\r\n            \"summary\":\"Two viable options for the stated goals.\",\r\n            \"options\":[\r\n                {\r\n                    \"name\":\"Simple 3-tier\",\r\n                    \"when_to_use\":\"Small team, moderate traffic.\",\r\n                    \"key_components\":[\"API\",\"Service\",\"DB\"],\r\n                    \"pros\":[\"Easy to build\",\"Low ops overhead\"],\r\n                    \"cons\":[\"Limited scalability\"],\r\n               ",
-      "kind": "function",
+      "file_path": "models.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "from datetime import datetime, timezone",
+      "kind": "import",
       "metadata": {},
+      "source_module": "from datetime import datetime, timezone",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "dcb88026-7c67-589b-8001-fe3471d5962f",
+      "name": "import json",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 3,
+      "end_line": 3,
+      "raw_source": "import json",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "import json",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "79b32108-2ebb-5ad4-9cdb-9690f7eb370e",
+      "name": "User",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 7,
+      "end_line": 14,
+      "raw_source": "class User(db.Model):\r\n    id = db.Column(db.Integer, primary_key=True)\r\n    username = db.Column(db.String(80), unique=True, nullable=False)\r\n    # This 'relationship' links this User to all their Pr",
+      "kind": "class",
+      "metadata": {},
+      "bases": [],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "d4ab96ab-eb58-5a06-a3e2-2394ad5c3562",
+      "name": "__repr__",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 13,
+      "end_line": 14,
+      "raw_source": "def __repr__(self):\r\n        return f'<User {self.username}>'",
+      "kind": "method",
+      "metadata": {},
+      "parent_class": "User",
       "parameters": [
-        "_"
+        "self"
+      ],
+      "return_type": null,
+      "calls": [],
+      "is_async": false,
+      "is_static": false
+    },
+    {
+      "id": "c0e4f191-929f-58ac-894c-1854058a7678",
+      "name": "Project",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 16,
+      "end_line": 34,
+      "raw_source": "class Project(db.Model):\r\n    id = db.Column(db.Integer, primary_key=True)\r\n    name = db.Column(db.String(120), nullable=False)\r\n    created_at = db.Column(db.DateTime, default=lambda: datetime.now(t",
+      "kind": "class",
+      "metadata": {},
+      "bases": [],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "97388f05-5558-56ae-9cc7-f21617e6638b",
+      "name": "to_dict",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 27,
+      "end_line": 34,
+      "raw_source": "def to_dict(self):\r\n        \"\"\"Returns a dictionary representation for API responses.\"\"\"\r\n        return {\r\n            \"id\": self.id,\r\n            \"name\": self.name,\r\n            \"created_at\": self.created_at.isoformat(),\r\n            \"user_id\": self.user_id\r\n        }",
+      "kind": "method",
+      "metadata": {},
+      "parent_class": "Project",
+      "parameters": [
+        "self"
+      ],
+      "return_type": null,
+      "calls": [
+        "self.created_at.isoformat"
+      ],
+      "is_async": false,
+      "is_static": false
+    },
+    {
+      "id": "d2fad4b0-ebf0-561e-a3ba-aab815a9ab6b",
+      "name": "Analysis",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 36,
+      "end_line": 72,
+      "raw_source": "class Analysis(db.Model):\r\n    id = db.Column(db.Integer, primary_key=True)\r\n    \r\n    # This 'ForeignKey' links this Analysis to a specific Project's id.\r\n    project_id = db.Column(db.Integer, db.Fo",
+      "kind": "class",
+      "metadata": {},
+      "bases": [],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "f1f51c00-335d-5af0-b3e8-fe5b938496ae",
+      "name": "input_data",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 52,
+      "end_line": 56,
+      "raw_source": "def input_data(self):\r\n        \"\"\"Loads the JSON string from the DB as a Python dict.\"\"\"\r\n        if self._input_data_json is None:\r\n            return {}\r\n        return json.loads(self._input_data_json)",
+      "kind": "method",
+      "metadata": {},
+      "parent_class": "Analysis",
+      "parameters": [
+        "self"
+      ],
+      "return_type": null,
+      "calls": [
+        "json.loads"
+      ],
+      "is_async": false,
+      "is_static": false
+    },
+    {
+      "id": "9754c284-4d1b-5d4f-b0f9-1831f3123400",
+      "name": "input_data",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 59,
+      "end_line": 61,
+      "raw_source": "def input_data(self, value):\r\n        \"\"\"Saves a Python dict as a JSON string in the DB.\"\"\"\r\n        self._input_data_json = json.dumps(value)",
+      "kind": "method",
+      "metadata": {},
+      "parent_class": "Analysis",
+      "parameters": [
+        "self",
+        "value"
       ],
       "return_type": null,
       "calls": [
         "json.dumps"
       ],
-      "docstring": null,
-      "is_async": false
+      "is_async": false,
+      "is_static": false
+    },
+    {
+      "id": "bf03c5ea-9c00-507a-8246-b59d1e22685b",
+      "name": "to_dict",
+      "language": "python",
+      "file_path": "models.py",
+      "start_line": 63,
+      "end_line": 72,
+      "raw_source": "def to_dict(self):\r\n        \"\"\"Returns a dictionary representation for API responses.\"\"\"\r\n        return {\r\n            \"id\": self.id,\r\n            \"project_id\": self.project_id,\r\n            \"analysis_type\": self.analysis_type,\r\n            \"input_data\": self.input_data, # Uses the @property\r\n            \"generated_content\": self.generated_content,\r\n            \"timestamp\": self.timestamp.isoformat()\r\n        }",
+      "kind": "method",
+      "metadata": {},
+      "parent_class": "Analysis",
+      "parameters": [
+        "self"
+      ],
+      "return_type": null,
+      "calls": [
+        "self.timestamp.isoformat"
+      ],
+      "is_async": false,
+      "is_static": false
     },
     {
       "id": "2ded2962-ffd5-5ea8-a27a-ea3f44110df4",
@@ -1398,6 +1257,46 @@
       "imported_names": []
     },
     {
+      "id": "bc62d509-121d-588b-ac51-82505ebf0fa9",
+      "name": "app\\main.py",
+      "language": "python",
+      "file_path": "app\\main.py",
+      "start_line": 1,
+      "end_line": 12,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 12
+    },
+    {
+      "id": "b55961b2-7021-50a6-9556-629f49a9e137",
+      "name": "import os",
+      "language": "python",
+      "file_path": "app\\main.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "import os",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "import os",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "7ca51e7e-6ba2-5f91-add7-d337d4f39fa1",
+      "name": "from app import create_app",
+      "language": "python",
+      "file_path": "app\\main.py",
+      "start_line": 3,
+      "end_line": 3,
+      "raw_source": "from app import create_app",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app import create_app",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
       "id": "d134be49-e209-5e57-b667-40d1d496197e",
       "name": "tests\\test_testcases.py",
       "language": "python",
@@ -1487,6 +1386,107 @@
       "start_line": 12,
       "end_line": 28,
       "raw_source": "def fake_gemini(_):\r\n        return json.dumps({\r\n            \"version\":\"1.0\",\r\n            \"summary\":\"stub\",\r\n            \"cases\":[\r\n                {\r\n                    \"id\":\"TC-001\",\r\n                    \"title\":\"Reset password happy path\",\r\n                    \"given\":\"A registered user exists\",\r\n                    \"when\":\"They request a password reset via email\",\r\n                    \"then\":\"A reset link is sent to their email\",\r\n                    \"priority\":\"High\",\r\n                  ",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [
+        "_"
+      ],
+      "return_type": null,
+      "calls": [
+        "json.dumps"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
+      "name": "tests\\test_design.py",
+      "language": "python",
+      "file_path": "tests\\test_design.py",
+      "start_line": 1,
+      "end_line": 48,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 48
+    },
+    {
+      "id": "1a2cfcc2-4dcd-581e-a21e-10f52a3fde0d",
+      "name": "import os, json",
+      "language": "python",
+      "file_path": "tests\\test_design.py",
+      "start_line": 1,
+      "end_line": 1,
+      "raw_source": "import os, json",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "import os, json",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "68935925-7b77-5092-bbea-23c3ad83d138",
+      "name": "from app import create_app",
+      "language": "python",
+      "file_path": "tests\\test_design.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "from app import create_app",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app import create_app",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "6f36c29e-931d-5b9f-b607-a35e9a76b06d",
+      "name": "test_design_200",
+      "language": "python",
+      "file_path": "tests\\test_design.py",
+      "start_line": 4,
+      "end_line": 47,
+      "raw_source": "def test_design_200(monkeypatch):\r\n    monkeypatch.setenv(\"API_KEY\", \"supersecret123\")\r\n\r\n    # stub LLM so test is deterministic\r\n    from app.core import llm\r\n    def fake_gemini(_):\r\n        return json.dumps({\r\n            \"version\":\"1.0\",\r\n            \"summary\":\"Two viable options for the stated goals.\",\r\n            \"options\":[\r\n                {\r\n                    \"name\":\"Simple 3-tier\",\r\n                    \"when_to_use\":\"Small team, moderate traffic.\",\r\n                    \"key_compon",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [
+        "monkeypatch"
+      ],
+      "return_type": null,
+      "calls": [
+        "monkeypatch.setenv",
+        "json.dumps",
+        "monkeypatch.setattr",
+        "create_app",
+        "app.test_client",
+        "client.post",
+        "res.get_json",
+        "len"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "e4b3aa38-dcbc-5f57-8d0a-c51fa48ad388",
+      "name": "from app.core import llm",
+      "language": "python",
+      "file_path": "tests\\test_design.py",
+      "start_line": 8,
+      "end_line": 8,
+      "raw_source": "from app.core import llm",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core import llm",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "a0ae121a-df95-56e8-9b26-6bc46ec793b4",
+      "name": "fake_gemini",
+      "language": "python",
+      "file_path": "tests\\test_design.py",
+      "start_line": 9,
+      "end_line": 32,
+      "raw_source": "def fake_gemini(_):\r\n        return json.dumps({\r\n            \"version\":\"1.0\",\r\n            \"summary\":\"Two viable options for the stated goals.\",\r\n            \"options\":[\r\n                {\r\n                    \"name\":\"Simple 3-tier\",\r\n                    \"when_to_use\":\"Small team, moderate traffic.\",\r\n                    \"key_components\":[\"API\",\"Service\",\"DB\"],\r\n                    \"pros\":[\"Easy to build\",\"Low ops overhead\"],\r\n                    \"cons\":[\"Limited scalability\"],\r\n               ",
       "kind": "function",
       "metadata": {},
       "parameters": [
@@ -1724,202 +1724,6 @@
       "return_type": null,
       "calls": [
         "getattr"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
-      "id": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "name": "migrations\\env.py",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 1,
-      "end_line": 114,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 114
-    },
-    {
-      "id": "1e7f8579-73a8-5031-b66c-0a58ad01beaa",
-      "name": "import logging",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "import logging",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "import logging",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "4903acbc-68e3-5089-bbfc-fbb1989bc120",
-      "name": "from logging.config import fileConfig",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 2,
-      "end_line": 2,
-      "raw_source": "from logging.config import fileConfig",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from logging.config import fileConfig",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "1e93e1d5-d4f1-582b-b695-e8ece5866dab",
-      "name": "from flask import current_app",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 4,
-      "end_line": 4,
-      "raw_source": "from flask import current_app",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from flask import current_app",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "9b45a683-5b15-58bc-8661-1ef4f332ba38",
-      "name": "from alembic import context",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 6,
-      "end_line": 6,
-      "raw_source": "from alembic import context",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from alembic import context",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "a4914e28-575b-5539-ab40-a448aa913397",
-      "name": "get_engine",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 18,
-      "end_line": 24,
-      "raw_source": "def get_engine():\n    try:\n        # this works with Flask-SQLAlchemy<3 and Alchemical\n        return current_app.extensions['migrate'].db.get_engine()\n    except (TypeError, AttributeError):\n        # this works with Flask-SQLAlchemy>=3\n        return current_app.extensions['migrate'].db.engine",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [],
-      "return_type": null,
-      "calls": [
-        "current_app.extensions['migrate'].db.get_engine"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
-      "id": "ccb561a6-170c-5af9-ac1b-dc091b412823",
-      "name": "get_engine_url",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 27,
-      "end_line": 32,
-      "raw_source": "def get_engine_url():\n    try:\n        return get_engine().url.render_as_string(hide_password=False).replace(\n            '%', '%%')\n    except AttributeError:\n        return str(get_engine().url).replace('%', '%%')",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [],
-      "return_type": null,
-      "calls": [
-        "get_engine",
-        "str"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
-      "id": "207e5c08-ad1b-520d-a91f-b0dfc8a13d12",
-      "name": "get_metadata",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 48,
-      "end_line": 51,
-      "raw_source": "def get_metadata():\n    if hasattr(target_db, 'metadatas'):\n        return target_db.metadatas[None]\n    return target_db.metadata",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [],
-      "return_type": null,
-      "calls": [
-        "hasattr"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
-      "id": "644f41f6-9547-546c-8443-26b333fe44ab",
-      "name": "run_migrations_offline",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 54,
-      "end_line": 72,
-      "raw_source": "def run_migrations_offline():\n    \"\"\"Run migrations in 'offline' mode.\n\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation\n    we don't even need a DBAPI to be available.\n\n    Calls to context.execute() here emit the given string to the\n    script output.\n\n    \"\"\"\n    url = config.get_main_option(\"sqlalchemy.url\")\n    context.configure(\n        url=url, target_metadata=get_metadata(), literal_bi",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [],
-      "return_type": null,
-      "calls": [
-        "config.get_main_option",
-        "context.configure",
-        "get_metadata",
-        "context.begin_transaction",
-        "context.run_migrations"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
-      "id": "4fe24611-5873-5f31-9c17-d5ab3b6cd94a",
-      "name": "run_migrations_online",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 75,
-      "end_line": 107,
-      "raw_source": "def run_migrations_online():\n    \"\"\"Run migrations in 'online' mode.\n\n    In this scenario we need to create an Engine\n    and associate a connection with the context.\n\n    \"\"\"\n\n    # this callback is used to prevent an auto-migration from being generated\n    # when there are no changes to the schema\n    # reference: http://alembic.zzzcomputing.com/en/latest/cookbook.html\n    def process_revision_directives(context, revision, directives):\n        if getattr(config.cmd_opts, 'autogenerate', False",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [],
-      "return_type": null,
-      "calls": [
-        "getattr",
-        "script.upgrade_ops.is_empty",
-        "logger.info",
-        "conf_args.get",
-        "get_engine",
-        "connectable.connect",
-        "context.configure",
-        "get_metadata",
-        "context.begin_transaction",
-        "context.run_migrations"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
-      "id": "e97023a9-6d83-5755-a931-d8de2a58ce01",
-      "name": "process_revision_directives",
-      "language": "python",
-      "file_path": "migrations\\env.py",
-      "start_line": 86,
-      "end_line": 91,
-      "raw_source": "def process_revision_directives(context, revision, directives):\n        if getattr(config.cmd_opts, 'autogenerate', False):\n            script = directives[0]\n            if script.upgrade_ops.is_empty():\n                directives[:] = []\n                logger.info('No changes in schema detected.')",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [
-        "context",
-        "revision",
-        "directives"
-      ],
-      "return_type": null,
-      "calls": [
-        "getattr",
-        "script.upgrade_ops.is_empty",
-        "logger.info"
       ],
       "docstring": null,
       "is_async": false
@@ -2165,157 +1969,197 @@
       "is_async": false
     },
     {
-      "id": "7b8546b4-97d1-5871-972c-a6818134d96f",
-      "name": "app\\apis\\debug.py",
+      "id": "981d98f5-449d-5817-bb07-abb93eaf92c1",
+      "name": "migrations\\env.py",
       "language": "python",
-      "file_path": "app\\apis\\debug.py",
+      "file_path": "migrations\\env.py",
       "start_line": 1,
-      "end_line": 40,
+      "end_line": 114,
       "raw_source": "",
       "kind": "file",
       "metadata": {},
-      "loc": 40
+      "loc": 114
     },
     {
-      "id": "015104c6-1910-5ba8-bea1-5451092ec794",
-      "name": "import json",
+      "id": "1e7f8579-73a8-5031-b66c-0a58ad01beaa",
+      "name": "import logging",
       "language": "python",
-      "file_path": "app\\apis\\debug.py",
+      "file_path": "migrations\\env.py",
       "start_line": 1,
       "end_line": 1,
-      "raw_source": "import json",
+      "raw_source": "import logging",
       "kind": "import",
       "metadata": {},
-      "source_module": "import json",
+      "source_module": "import logging",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "d7d73010-1ad2-588b-ae14-1a2b67dd680a",
-      "name": "from flask import Blueprint, jsonify, request, g",
+      "id": "4903acbc-68e3-5089-bbfc-fbb1989bc120",
+      "name": "from logging.config import fileConfig",
       "language": "python",
-      "file_path": "app\\apis\\debug.py",
+      "file_path": "migrations\\env.py",
       "start_line": 2,
       "end_line": 2,
-      "raw_source": "from flask import Blueprint, jsonify, request, g",
+      "raw_source": "from logging.config import fileConfig",
       "kind": "import",
       "metadata": {},
-      "source_module": "from flask import Blueprint, jsonify, request, g",
+      "source_module": "from logging.config import fileConfig",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "8aa84667-13f5-574a-a06f-dd9802dd8a09",
-      "name": "from app.db import db",
+      "id": "1e93e1d5-d4f1-582b-b695-e8ece5866dab",
+      "name": "from flask import current_app",
       "language": "python",
-      "file_path": "app\\apis\\debug.py",
-      "start_line": 3,
-      "end_line": 3,
-      "raw_source": "from app.db import db",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.db import db",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "d59835b6-1030-5f0f-ab0c-80b8178dcdb0",
-      "name": "from app.models import RequestLog, ResponseLog",
-      "language": "python",
-      "file_path": "app\\apis\\debug.py",
+      "file_path": "migrations\\env.py",
       "start_line": 4,
       "end_line": 4,
-      "raw_source": "from app.models import RequestLog, ResponseLog",
+      "raw_source": "from flask import current_app",
       "kind": "import",
       "metadata": {},
-      "source_module": "from app.models import RequestLog, ResponseLog",
+      "source_module": "from flask import current_app",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "9bee24f6-6f94-5cd4-8197-b495cc8f9f40",
-      "name": "from app.core.schemas import DebugRequest, DebugResponse",
+      "id": "9b45a683-5b15-58bc-8661-1ef4f332ba38",
+      "name": "from alembic import context",
       "language": "python",
-      "file_path": "app\\apis\\debug.py",
-      "start_line": 5,
-      "end_line": 5,
-      "raw_source": "from app.core.schemas import DebugRequest, DebugResponse",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.schemas import DebugRequest, DebugResponse",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "e89b13d9-d740-5304-bfb1-d8fa56d11687",
-      "name": "from app.core.llm import run_debug_assistant",
-      "language": "python",
-      "file_path": "app\\apis\\debug.py",
+      "file_path": "migrations\\env.py",
       "start_line": 6,
       "end_line": 6,
-      "raw_source": "from app.core.llm import run_debug_assistant",
+      "raw_source": "from alembic import context",
       "kind": "import",
       "metadata": {},
-      "source_module": "from app.core.llm import run_debug_assistant",
+      "source_module": "from alembic import context",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "5738b823-f150-50c1-ae9c-a660a8012e9b",
-      "name": "from app.core.docs import api as docs, USE_DOCS",
+      "id": "a4914e28-575b-5539-ab40-a448aa913397",
+      "name": "get_engine",
       "language": "python",
-      "file_path": "app\\apis\\debug.py",
-      "start_line": 7,
-      "end_line": 7,
-      "raw_source": "from app.core.docs import api as docs, USE_DOCS",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.docs import api as docs, USE_DOCS",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "21cbb682-4065-54c6-9551-2ae827a2d211",
-      "name": "from spectree import Response",
-      "language": "python",
-      "file_path": "app\\apis\\debug.py",
-      "start_line": 8,
-      "end_line": 8,
-      "raw_source": "from spectree import Response",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from spectree import Response",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "6a4a6297-738e-509c-85d0-4562ed40858b",
-      "name": "handle_debug_request",
-      "language": "python",
-      "file_path": "app\\apis\\debug.py",
-      "start_line": 13,
-      "end_line": 37,
-      "raw_source": "def handle_debug_request():\r\n    data = request.get_json(silent=True) or {}\r\n    project_id = data.get(\"project_id\")\r\n\r\n    if project_id:\r\n        try:\r\n            req = RequestLog(route=request.path, project_id=int(project_id), body_json=json.dumps(data))\r\n            db.session.add(req)\r\n            db.session.commit()\r\n            g._manual_req_id = req.id\r\n        except Exception:\r\n            db.session.rollback()\r\n\r\n    try:\r\n        body = DebugRequest.model_validate(data)\r\n        res",
+      "file_path": "migrations\\env.py",
+      "start_line": 18,
+      "end_line": 24,
+      "raw_source": "def get_engine():\n    try:\n        # this works with Flask-SQLAlchemy<3 and Alchemical\n        return current_app.extensions['migrate'].db.get_engine()\n    except (TypeError, AttributeError):\n        # this works with Flask-SQLAlchemy>=3\n        return current_app.extensions['migrate'].db.engine",
       "kind": "function",
       "metadata": {},
       "parameters": [],
       "return_type": null,
       "calls": [
-        "request.get_json",
-        "data.get",
-        "RequestLog",
-        "int",
-        "json.dumps",
-        "db.session.add",
-        "db.session.commit",
-        "db.session.rollback",
-        "DebugRequest.model_validate",
-        "run_debug_assistant",
-        "hasattr",
-        "ResponseLog",
-        "resp.model_dump",
-        "jsonify",
+        "current_app.extensions['migrate'].db.get_engine"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "ccb561a6-170c-5af9-ac1b-dc091b412823",
+      "name": "get_engine_url",
+      "language": "python",
+      "file_path": "migrations\\env.py",
+      "start_line": 27,
+      "end_line": 32,
+      "raw_source": "def get_engine_url():\n    try:\n        return get_engine().url.render_as_string(hide_password=False).replace(\n            '%', '%%')\n    except AttributeError:\n        return str(get_engine().url).replace('%', '%%')",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "get_engine",
         "str"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "207e5c08-ad1b-520d-a91f-b0dfc8a13d12",
+      "name": "get_metadata",
+      "language": "python",
+      "file_path": "migrations\\env.py",
+      "start_line": 48,
+      "end_line": 51,
+      "raw_source": "def get_metadata():\n    if hasattr(target_db, 'metadatas'):\n        return target_db.metadatas[None]\n    return target_db.metadata",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "hasattr"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "644f41f6-9547-546c-8443-26b333fe44ab",
+      "name": "run_migrations_offline",
+      "language": "python",
+      "file_path": "migrations\\env.py",
+      "start_line": 54,
+      "end_line": 72,
+      "raw_source": "def run_migrations_offline():\n    \"\"\"Run migrations in 'offline' mode.\n\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation\n    we don't even need a DBAPI to be available.\n\n    Calls to context.execute() here emit the given string to the\n    script output.\n\n    \"\"\"\n    url = config.get_main_option(\"sqlalchemy.url\")\n    context.configure(\n        url=url, target_metadata=get_metadata(), literal_bi",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "config.get_main_option",
+        "context.configure",
+        "get_metadata",
+        "context.begin_transaction",
+        "context.run_migrations"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "4fe24611-5873-5f31-9c17-d5ab3b6cd94a",
+      "name": "run_migrations_online",
+      "language": "python",
+      "file_path": "migrations\\env.py",
+      "start_line": 75,
+      "end_line": 107,
+      "raw_source": "def run_migrations_online():\n    \"\"\"Run migrations in 'online' mode.\n\n    In this scenario we need to create an Engine\n    and associate a connection with the context.\n\n    \"\"\"\n\n    # this callback is used to prevent an auto-migration from being generated\n    # when there are no changes to the schema\n    # reference: http://alembic.zzzcomputing.com/en/latest/cookbook.html\n    def process_revision_directives(context, revision, directives):\n        if getattr(config.cmd_opts, 'autogenerate', False",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "getattr",
+        "script.upgrade_ops.is_empty",
+        "logger.info",
+        "conf_args.get",
+        "get_engine",
+        "connectable.connect",
+        "context.configure",
+        "get_metadata",
+        "context.begin_transaction",
+        "context.run_migrations"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "e97023a9-6d83-5755-a931-d8de2a58ce01",
+      "name": "process_revision_directives",
+      "language": "python",
+      "file_path": "migrations\\env.py",
+      "start_line": 86,
+      "end_line": 91,
+      "raw_source": "def process_revision_directives(context, revision, directives):\n        if getattr(config.cmd_opts, 'autogenerate', False):\n            script = directives[0]\n            if script.upgrade_ops.is_empty():\n                directives[:] = []\n                logger.info('No changes in schema detected.')",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [
+        "context",
+        "revision",
+        "directives"
+      ],
+      "return_type": null,
+      "calls": [
+        "getattr",
+        "script.upgrade_ops.is_empty",
+        "logger.info"
       ],
       "docstring": null,
       "is_async": false
@@ -2683,6 +2527,174 @@
       "is_async": false
     },
     {
+      "id": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "name": "app\\apis\\debug.py",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 1,
+      "end_line": 40,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 40
+    },
+    {
+      "id": "015104c6-1910-5ba8-bea1-5451092ec794",
+      "name": "import json",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 1,
+      "end_line": 1,
+      "raw_source": "import json",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "import json",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "d7d73010-1ad2-588b-ae14-1a2b67dd680a",
+      "name": "from flask import Blueprint, jsonify, request, g",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "from flask import Blueprint, jsonify, request, g",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from flask import Blueprint, jsonify, request, g",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "8aa84667-13f5-574a-a06f-dd9802dd8a09",
+      "name": "from app.db import db",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 3,
+      "end_line": 3,
+      "raw_source": "from app.db import db",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.db import db",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "d59835b6-1030-5f0f-ab0c-80b8178dcdb0",
+      "name": "from app.models import RequestLog, ResponseLog",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 4,
+      "end_line": 4,
+      "raw_source": "from app.models import RequestLog, ResponseLog",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.models import RequestLog, ResponseLog",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "9bee24f6-6f94-5cd4-8197-b495cc8f9f40",
+      "name": "from app.core.schemas import DebugRequest, DebugResponse",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 5,
+      "end_line": 5,
+      "raw_source": "from app.core.schemas import DebugRequest, DebugResponse",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.schemas import DebugRequest, DebugResponse",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "e89b13d9-d740-5304-bfb1-d8fa56d11687",
+      "name": "from app.core.llm import run_debug_assistant",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 6,
+      "end_line": 6,
+      "raw_source": "from app.core.llm import run_debug_assistant",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.llm import run_debug_assistant",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "5738b823-f150-50c1-ae9c-a660a8012e9b",
+      "name": "from app.core.docs import api as docs, USE_DOCS",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 7,
+      "end_line": 7,
+      "raw_source": "from app.core.docs import api as docs, USE_DOCS",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.docs import api as docs, USE_DOCS",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "21cbb682-4065-54c6-9551-2ae827a2d211",
+      "name": "from spectree import Response",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 8,
+      "end_line": 8,
+      "raw_source": "from spectree import Response",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from spectree import Response",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "6a4a6297-738e-509c-85d0-4562ed40858b",
+      "name": "handle_debug_request",
+      "language": "python",
+      "file_path": "app\\apis\\debug.py",
+      "start_line": 13,
+      "end_line": 37,
+      "raw_source": "def handle_debug_request():\r\n    data = request.get_json(silent=True) or {}\r\n    project_id = data.get(\"project_id\")\r\n\r\n    if project_id:\r\n        try:\r\n            req = RequestLog(route=request.path, project_id=int(project_id), body_json=json.dumps(data))\r\n            db.session.add(req)\r\n            db.session.commit()\r\n            g._manual_req_id = req.id\r\n        except Exception:\r\n            db.session.rollback()\r\n\r\n    try:\r\n        body = DebugRequest.model_validate(data)\r\n        res",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "request.get_json",
+        "data.get",
+        "RequestLog",
+        "int",
+        "json.dumps",
+        "db.session.add",
+        "db.session.commit",
+        "db.session.rollback",
+        "DebugRequest.model_validate",
+        "run_debug_assistant",
+        "hasattr",
+        "ResponseLog",
+        "resp.model_dump",
+        "jsonify",
+        "str"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "71d03d7a-dcf9-52fa-b560-b902d7e1951f",
+      "name": "app\\apis\\__init__.py",
+      "language": "python",
+      "file_path": "app\\apis\\__init__.py",
+      "start_line": 1,
+      "end_line": 1,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 1
+    },
+    {
       "id": "4e752bc7-25a1-5a50-b955-526e0211a344",
       "name": "app\\apis\\design.py",
       "language": "python",
@@ -2837,6 +2849,123 @@
       "source_module": "from app.core.docs import api as docs, USE_DOCS",
       "resolved_path": null,
       "imported_names": []
+    },
+    {
+      "id": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
+      "name": "app\\apis\\review.py",
+      "language": "python",
+      "file_path": "app\\apis\\review.py",
+      "start_line": 1,
+      "end_line": 25,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 25
+    },
+    {
+      "id": "48d04824-eb3d-5e80-bcf8-cffb3f6803f9",
+      "name": "import os",
+      "language": "python",
+      "file_path": "app\\apis\\review.py",
+      "start_line": 1,
+      "end_line": 1,
+      "raw_source": "import os",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "import os",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "46d066ac-8d6d-5705-8a7c-2e013bc86d6a",
+      "name": "from flask import Blueprint, request, jsonify",
+      "language": "python",
+      "file_path": "app\\apis\\review.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "from flask import Blueprint, request, jsonify",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from flask import Blueprint, request, jsonify",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "09c356d8-2348-5764-86fc-176886323560",
+      "name": "from app.core.schemas import ReviewRequest, ReviewResponse",
+      "language": "python",
+      "file_path": "app\\apis\\review.py",
+      "start_line": 3,
+      "end_line": 3,
+      "raw_source": "from app.core.schemas import ReviewRequest, ReviewResponse",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.schemas import ReviewRequest, ReviewResponse",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "0229dabe-6e23-539c-bc8f-e7e82363642e",
+      "name": "from app.core.llm import run_review",
+      "language": "python",
+      "file_path": "app\\apis\\review.py",
+      "start_line": 4,
+      "end_line": 4,
+      "raw_source": "from app.core.llm import run_review",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.llm import run_review",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "e242fd85-12f2-56e5-b4e9-59da97e3cce5",
+      "name": "from spectree import Response",
+      "language": "python",
+      "file_path": "app\\apis\\review.py",
+      "start_line": 5,
+      "end_line": 5,
+      "raw_source": "from spectree import Response",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from spectree import Response",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "96271131-b28c-5844-86b0-6ed4c491275d",
+      "name": "from app.core.docs import api as docs",
+      "language": "python",
+      "file_path": "app\\apis\\review.py",
+      "start_line": 11,
+      "end_line": 11,
+      "raw_source": "from app.core.docs import api as docs",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.docs import api as docs",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "57edb18c-1999-5f55-a7f5-99d1cedee01e",
+      "name": "handle_review",
+      "language": "python",
+      "file_path": "app\\apis\\review.py",
+      "start_line": 14,
+      "end_line": 17,
+      "raw_source": "def handle_review():\r\n    body = ReviewRequest.model_validate_json(request.data)\r\n    resp = run_review(body)\r\n    return jsonify(resp.model_dump()), 200",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "ReviewRequest.model_validate_json",
+        "run_review",
+        "jsonify",
+        "resp.model_dump"
+      ],
+      "docstring": null,
+      "is_async": false
     },
     {
       "id": "ce5512bb-98f0-58e0-8b5f-c01afd6d8c2f",
@@ -3078,382 +3207,6 @@
       "is_async": false
     },
     {
-      "id": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
-      "name": "app\\apis\\techstack.py",
-      "language": "python",
-      "file_path": "app\\apis\\techstack.py",
-      "start_line": 1,
-      "end_line": 31,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 31
-    },
-    {
-      "id": "366a811a-878e-502d-9553-8402fe5f4b78",
-      "name": "from flask import Blueprint, jsonify, request",
-      "language": "python",
-      "file_path": "app\\apis\\techstack.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "from flask import Blueprint, jsonify, request",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from flask import Blueprint, jsonify, request",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "f1d22a5a-4d95-5e22-bb9d-50a514dc2e03",
-      "name": "from spectree import Response",
-      "language": "python",
-      "file_path": "app\\apis\\techstack.py",
-      "start_line": 2,
-      "end_line": 2,
-      "raw_source": "from spectree import Response",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from spectree import Response",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "53f8a3e2-dc92-5cb3-bfb8-8fc5c1a530fb",
-      "name": "from app.core.schemas import TechStackRequest, TechStackResponse",
-      "language": "python",
-      "file_path": "app\\apis\\techstack.py",
-      "start_line": 3,
-      "end_line": 3,
-      "raw_source": "from app.core.schemas import TechStackRequest, TechStackResponse",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.schemas import TechStackRequest, TechStackResponse",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "77e14fd1-5964-552e-a101-47dfe4b96e44",
-      "name": "from app.core.llm import run_techstack",
-      "language": "python",
-      "file_path": "app\\apis\\techstack.py",
-      "start_line": 4,
-      "end_line": 4,
-      "raw_source": "from app.core.llm import run_techstack",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.llm import run_techstack",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "d018c359-b5f0-5c2e-95e2-c40a1f101c22",
-      "name": "from app.core.docs import api as docs, USE_DOCS",
-      "language": "python",
-      "file_path": "app\\apis\\techstack.py",
-      "start_line": 5,
-      "end_line": 5,
-      "raw_source": "from app.core.docs import api as docs, USE_DOCS",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.docs import api as docs, USE_DOCS",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "1a87a5c6-a7b1-5bef-a7bb-eb6473cd715a",
-      "name": "handle_techstack",
-      "language": "python",
-      "file_path": "app\\apis\\techstack.py",
-      "start_line": 10,
-      "end_line": 23,
-      "raw_source": "def handle_techstack():\r\n    \"\"\"\r\n    Handles the request for PS-05: Design Performance & Tech Stack Recommendation.\r\n    \"\"\"\r\n    if USE_DOCS and hasattr(request, 'context') and request.context.json:\r\n        validated_body = TechStackRequest.model_validate(request.context.json)\r\n    else:\r\n        try:\r\n            validated_body = TechStackRequest.model_validate_json(request.data)\r\n        except Exception as e:\r\n            return jsonify({\"msg\": f\"Invalid request body format: {e}\"}), 400\r\n ",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [],
-      "return_type": null,
-      "calls": [
-        "hasattr",
-        "TechStackRequest.model_validate",
-        "TechStackRequest.model_validate_json",
-        "jsonify",
-        "run_techstack",
-        "resp.model_dump"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
-      "id": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "name": "app\\apis\\testcases.py",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 1,
-      "end_line": 37,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 37
-    },
-    {
-      "id": "bea3df9c-ce11-542c-8392-b296a861fddc",
-      "name": "import os, json",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "import os, json",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "import os, json",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "61a6d643-37de-5c2f-b2b2-f7229968d488",
-      "name": "from flask import Blueprint, request, jsonify, g",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 2,
-      "end_line": 2,
-      "raw_source": "from flask import Blueprint, request, jsonify, g",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from flask import Blueprint, request, jsonify, g",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "23d3d608-6713-5c0b-a883-06f9591dde72",
-      "name": "from app.db import db",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 3,
-      "end_line": 3,
-      "raw_source": "from app.db import db",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.db import db",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "d8a77d28-059d-573e-a611-5404134e0778",
-      "name": "from app.models import RequestLog, ResponseLog",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 4,
-      "end_line": 4,
-      "raw_source": "from app.models import RequestLog, ResponseLog",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.models import RequestLog, ResponseLog",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "d551dbbc-1fc2-5dc8-960b-1017d0310422",
-      "name": "from app.core.schemas import TestCaseRequest, TestCaseResponse",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 5,
-      "end_line": 5,
-      "raw_source": "from app.core.schemas import TestCaseRequest, TestCaseResponse",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.schemas import TestCaseRequest, TestCaseResponse",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "84696bba-1475-5caf-a808-d8be9e8220cf",
-      "name": "from app.core.llm import run_testcases",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 6,
-      "end_line": 6,
-      "raw_source": "from app.core.llm import run_testcases",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.llm import run_testcases",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "07d8fafb-0f73-583e-aa94-5b05b4f2dec2",
-      "name": "from spectree import Response",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 7,
-      "end_line": 7,
-      "raw_source": "from spectree import Response",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from spectree import Response",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "6e44f9eb-0cf9-563e-890b-b02ff640e9e1",
-      "name": "handle_testcases",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 12,
-      "end_line": 32,
-      "raw_source": "def handle_testcases():\r\n    data = request.get_json()\r\n    if not data:\r\n        return jsonify({\"error\": \"Missing JSON body\"}), 400\r\n    try:\r\n        body = TestCaseRequest.model_validate(data)\r\n        resp = run_testcases(body)\r\n\r\n        # --- MANUAL PROJECT MEMORY LINK ---\r\n        if body.project_id:\r\n            req = RequestLog(route=request.path, project_id=body.project_id, body_json=json.dumps(data))\r\n            db.session.add(req)\r\n            db.session.flush()\r\n            res = ",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [],
-      "return_type": null,
-      "calls": [
-        "request.get_json",
-        "jsonify",
-        "TestCaseRequest.model_validate",
-        "run_testcases",
-        "RequestLog",
-        "json.dumps",
-        "db.session.add",
-        "db.session.flush",
-        "ResponseLog",
-        "resp.model_dump",
-        "db.session.commit",
-        "db.session.rollback",
-        "str"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
-      "id": "55dec5cd-8913-55b6-ba04-50616c639cde",
-      "name": "from app.core.docs import api as docs, USE_DOCS",
-      "language": "python",
-      "file_path": "app\\apis\\testcases.py",
-      "start_line": 35,
-      "end_line": 35,
-      "raw_source": "from app.core.docs import api as docs, USE_DOCS",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.docs import api as docs, USE_DOCS",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
-      "name": "app\\apis\\review.py",
-      "language": "python",
-      "file_path": "app\\apis\\review.py",
-      "start_line": 1,
-      "end_line": 25,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 25
-    },
-    {
-      "id": "48d04824-eb3d-5e80-bcf8-cffb3f6803f9",
-      "name": "import os",
-      "language": "python",
-      "file_path": "app\\apis\\review.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "import os",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "import os",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "46d066ac-8d6d-5705-8a7c-2e013bc86d6a",
-      "name": "from flask import Blueprint, request, jsonify",
-      "language": "python",
-      "file_path": "app\\apis\\review.py",
-      "start_line": 2,
-      "end_line": 2,
-      "raw_source": "from flask import Blueprint, request, jsonify",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from flask import Blueprint, request, jsonify",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "09c356d8-2348-5764-86fc-176886323560",
-      "name": "from app.core.schemas import ReviewRequest, ReviewResponse",
-      "language": "python",
-      "file_path": "app\\apis\\review.py",
-      "start_line": 3,
-      "end_line": 3,
-      "raw_source": "from app.core.schemas import ReviewRequest, ReviewResponse",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.schemas import ReviewRequest, ReviewResponse",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "0229dabe-6e23-539c-bc8f-e7e82363642e",
-      "name": "from app.core.llm import run_review",
-      "language": "python",
-      "file_path": "app\\apis\\review.py",
-      "start_line": 4,
-      "end_line": 4,
-      "raw_source": "from app.core.llm import run_review",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.llm import run_review",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "e242fd85-12f2-56e5-b4e9-59da97e3cce5",
-      "name": "from spectree import Response",
-      "language": "python",
-      "file_path": "app\\apis\\review.py",
-      "start_line": 5,
-      "end_line": 5,
-      "raw_source": "from spectree import Response",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from spectree import Response",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "96271131-b28c-5844-86b0-6ed4c491275d",
-      "name": "from app.core.docs import api as docs",
-      "language": "python",
-      "file_path": "app\\apis\\review.py",
-      "start_line": 11,
-      "end_line": 11,
-      "raw_source": "from app.core.docs import api as docs",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.docs import api as docs",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "57edb18c-1999-5f55-a7f5-99d1cedee01e",
-      "name": "handle_review",
-      "language": "python",
-      "file_path": "app\\apis\\review.py",
-      "start_line": 14,
-      "end_line": 17,
-      "raw_source": "def handle_review():\r\n    body = ReviewRequest.model_validate_json(request.data)\r\n    resp = run_review(body)\r\n    return jsonify(resp.model_dump()), 200",
-      "kind": "function",
-      "metadata": {},
-      "parameters": [],
-      "return_type": null,
-      "calls": [
-        "ReviewRequest.model_validate_json",
-        "run_review",
-        "jsonify",
-        "resp.model_dump"
-      ],
-      "docstring": null,
-      "is_async": false
-    },
-    {
       "id": "f87f446c-f76c-5d57-88e2-30a7ef92bda6",
       "name": "app\\apis\\risk.py",
       "language": "python",
@@ -3610,6 +3363,111 @@
       "imported_names": []
     },
     {
+      "id": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
+      "name": "app\\apis\\techstack.py",
+      "language": "python",
+      "file_path": "app\\apis\\techstack.py",
+      "start_line": 1,
+      "end_line": 31,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 31
+    },
+    {
+      "id": "366a811a-878e-502d-9553-8402fe5f4b78",
+      "name": "from flask import Blueprint, jsonify, request",
+      "language": "python",
+      "file_path": "app\\apis\\techstack.py",
+      "start_line": 1,
+      "end_line": 1,
+      "raw_source": "from flask import Blueprint, jsonify, request",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from flask import Blueprint, jsonify, request",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "f1d22a5a-4d95-5e22-bb9d-50a514dc2e03",
+      "name": "from spectree import Response",
+      "language": "python",
+      "file_path": "app\\apis\\techstack.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "from spectree import Response",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from spectree import Response",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "53f8a3e2-dc92-5cb3-bfb8-8fc5c1a530fb",
+      "name": "from app.core.schemas import TechStackRequest, TechStackResponse",
+      "language": "python",
+      "file_path": "app\\apis\\techstack.py",
+      "start_line": 3,
+      "end_line": 3,
+      "raw_source": "from app.core.schemas import TechStackRequest, TechStackResponse",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.schemas import TechStackRequest, TechStackResponse",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "77e14fd1-5964-552e-a101-47dfe4b96e44",
+      "name": "from app.core.llm import run_techstack",
+      "language": "python",
+      "file_path": "app\\apis\\techstack.py",
+      "start_line": 4,
+      "end_line": 4,
+      "raw_source": "from app.core.llm import run_techstack",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.llm import run_techstack",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "d018c359-b5f0-5c2e-95e2-c40a1f101c22",
+      "name": "from app.core.docs import api as docs, USE_DOCS",
+      "language": "python",
+      "file_path": "app\\apis\\techstack.py",
+      "start_line": 5,
+      "end_line": 5,
+      "raw_source": "from app.core.docs import api as docs, USE_DOCS",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.docs import api as docs, USE_DOCS",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "1a87a5c6-a7b1-5bef-a7bb-eb6473cd715a",
+      "name": "handle_techstack",
+      "language": "python",
+      "file_path": "app\\apis\\techstack.py",
+      "start_line": 10,
+      "end_line": 23,
+      "raw_source": "def handle_techstack():\r\n    \"\"\"\r\n    Handles the request for PS-05: Design Performance & Tech Stack Recommendation.\r\n    \"\"\"\r\n    if USE_DOCS and hasattr(request, 'context') and request.context.json:\r\n        validated_body = TechStackRequest.model_validate(request.context.json)\r\n    else:\r\n        try:\r\n            validated_body = TechStackRequest.model_validate_json(request.data)\r\n        except Exception as e:\r\n            return jsonify({\"msg\": f\"Invalid request body format: {e}\"}), 400\r\n ",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "hasattr",
+        "TechStackRequest.model_validate",
+        "TechStackRequest.model_validate_json",
+        "jsonify",
+        "run_techstack",
+        "resp.model_dump"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
       "id": "96e72403-fda1-5666-8256-115bc4a2f42b",
       "name": "app\\core\\__init__.py",
       "language": "python",
@@ -3622,64 +3480,882 @@
       "loc": 1
     },
     {
-      "id": "457a8e95-c2c1-53f8-bbeb-19bf18c0cd63",
-      "name": "app\\core\\docs.py",
+      "id": "51ce957c-cab7-5d24-8f75-7e8dd62347ea",
+      "name": "app\\apis\\tradeoff.py",
       "language": "python",
-      "file_path": "app\\core\\docs.py",
+      "file_path": "app\\apis\\tradeoff.py",
       "start_line": 1,
-      "end_line": 21,
+      "end_line": 41,
       "raw_source": "",
       "kind": "file",
       "metadata": {},
-      "loc": 21
+      "loc": 41
     },
     {
-      "id": "0d2ec3a1-c76a-5a21-9818-59c4a703b373",
-      "name": "from spectree import SpecTree",
+      "id": "226fddd8-4e69-52e2-b132-c5217bcdefeb",
+      "name": "import os, json",
       "language": "python",
-      "file_path": "app\\core\\docs.py",
+      "file_path": "app\\apis\\tradeoff.py",
       "start_line": 1,
       "end_line": 1,
-      "raw_source": "from spectree import SpecTree",
+      "raw_source": "import os, json",
       "kind": "import",
       "metadata": {},
-      "source_module": "from spectree import SpecTree",
+      "source_module": "import os, json",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "012dc632-af25-51da-8c18-8f5a7e6212a7",
-      "name": "from pydantic import BaseModel",
+      "id": "6a4926c3-938e-5ba1-b018-c37648264709",
+      "name": "from flask import Blueprint, request, jsonify, g",
       "language": "python",
-      "file_path": "app\\core\\docs.py",
+      "file_path": "app\\apis\\tradeoff.py",
       "start_line": 2,
       "end_line": 2,
-      "raw_source": "from pydantic import BaseModel",
+      "raw_source": "from flask import Blueprint, request, jsonify, g",
       "kind": "import",
       "metadata": {},
-      "source_module": "from pydantic import BaseModel",
+      "source_module": "from flask import Blueprint, request, jsonify, g",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "1b15b00d-9dc2-56de-a3c2-12062daccda4",
-      "name": "init_docs",
+      "id": "06494a10-ee3d-5099-9902-95f574236de7",
+      "name": "from app.db import db",
       "language": "python",
-      "file_path": "app\\core\\docs.py",
-      "start_line": 19,
-      "end_line": 21,
-      "raw_source": "def init_docs(app):\r\n    if USE_DOCS:\r\n        api.register(app)",
+      "file_path": "app\\apis\\tradeoff.py",
+      "start_line": 3,
+      "end_line": 3,
+      "raw_source": "from app.db import db",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.db import db",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "008466b9-5cd9-5988-a680-a645f20aaac4",
+      "name": "from app.models import RequestLog, ResponseLog",
+      "language": "python",
+      "file_path": "app\\apis\\tradeoff.py",
+      "start_line": 4,
+      "end_line": 4,
+      "raw_source": "from app.models import RequestLog, ResponseLog",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.models import RequestLog, ResponseLog",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "6a277be7-504e-54b1-81b0-460a13943ddd",
+      "name": "from app.core.schemas import TradeoffRequest, TradeoffResponse",
+      "language": "python",
+      "file_path": "app\\apis\\tradeoff.py",
+      "start_line": 5,
+      "end_line": 5,
+      "raw_source": "from app.core.schemas import TradeoffRequest, TradeoffResponse",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.schemas import TradeoffRequest, TradeoffResponse",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "966420c3-951c-5b4b-a57e-588d177ccdbe",
+      "name": "from app.core.llm import run_tradeoff",
+      "language": "python",
+      "file_path": "app\\apis\\tradeoff.py",
+      "start_line": 6,
+      "end_line": 6,
+      "raw_source": "from app.core.llm import run_tradeoff",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.llm import run_tradeoff",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "4a1ab05d-6ab2-5181-93be-cb687809d53f",
+      "name": "from spectree import Response",
+      "language": "python",
+      "file_path": "app\\apis\\tradeoff.py",
+      "start_line": 7,
+      "end_line": 7,
+      "raw_source": "from spectree import Response",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from spectree import Response",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "18aecbe0-54fe-5796-9a43-42a2d16a5bd1",
+      "name": "handle_tradeoff",
+      "language": "python",
+      "file_path": "app\\apis\\tradeoff.py",
+      "start_line": 12,
+      "end_line": 36,
+      "raw_source": "def handle_tradeoff():\r\n    data = request.get_json(silent=True) or {}\r\n    project_id = data.get(\"project_id\")\r\n\r\n    if project_id:\r\n        try:\r\n            req = RequestLog(route=request.path, project_id=int(project_id), body_json=json.dumps(data))\r\n            db.session.add(req)\r\n            db.session.commit()\r\n            g._manual_req_id = req.id\r\n        except Exception:\r\n            db.session.rollback()\r\n\r\n    try:\r\n        body = TradeoffRequest.model_validate(data)\r\n        resp ",
       "kind": "function",
       "metadata": {},
-      "parameters": [
-        "app"
-      ],
+      "parameters": [],
       "return_type": null,
       "calls": [
-        "api.register"
+        "request.get_json",
+        "data.get",
+        "RequestLog",
+        "int",
+        "json.dumps",
+        "db.session.add",
+        "db.session.commit",
+        "db.session.rollback",
+        "TradeoffRequest.model_validate",
+        "run_tradeoff",
+        "hasattr",
+        "ResponseLog",
+        "resp.model_dump",
+        "jsonify",
+        "str"
       ],
       "docstring": null,
       "is_async": false
+    },
+    {
+      "id": "f03b00a8-16a4-5b63-99f9-bd77034fb1ae",
+      "name": "from app.core.docs import api as docs, USE_DOCS",
+      "language": "python",
+      "file_path": "app\\apis\\tradeoff.py",
+      "start_line": 39,
+      "end_line": 39,
+      "raw_source": "from app.core.docs import api as docs, USE_DOCS",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.docs import api as docs, USE_DOCS",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "93503a9d-5cac-5225-b053-35c5ad6b3223",
+      "name": "app\\apis\\testcases.py",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 1,
+      "end_line": 37,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 37
+    },
+    {
+      "id": "bea3df9c-ce11-542c-8392-b296a861fddc",
+      "name": "import os, json",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 1,
+      "end_line": 1,
+      "raw_source": "import os, json",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "import os, json",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "61a6d643-37de-5c2f-b2b2-f7229968d488",
+      "name": "from flask import Blueprint, request, jsonify, g",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "from flask import Blueprint, request, jsonify, g",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from flask import Blueprint, request, jsonify, g",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "23d3d608-6713-5c0b-a883-06f9591dde72",
+      "name": "from app.db import db",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 3,
+      "end_line": 3,
+      "raw_source": "from app.db import db",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.db import db",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "d8a77d28-059d-573e-a611-5404134e0778",
+      "name": "from app.models import RequestLog, ResponseLog",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 4,
+      "end_line": 4,
+      "raw_source": "from app.models import RequestLog, ResponseLog",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.models import RequestLog, ResponseLog",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "d551dbbc-1fc2-5dc8-960b-1017d0310422",
+      "name": "from app.core.schemas import TestCaseRequest, TestCaseResponse",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 5,
+      "end_line": 5,
+      "raw_source": "from app.core.schemas import TestCaseRequest, TestCaseResponse",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.schemas import TestCaseRequest, TestCaseResponse",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "84696bba-1475-5caf-a808-d8be9e8220cf",
+      "name": "from app.core.llm import run_testcases",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 6,
+      "end_line": 6,
+      "raw_source": "from app.core.llm import run_testcases",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.llm import run_testcases",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "07d8fafb-0f73-583e-aa94-5b05b4f2dec2",
+      "name": "from spectree import Response",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 7,
+      "end_line": 7,
+      "raw_source": "from spectree import Response",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from spectree import Response",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "6e44f9eb-0cf9-563e-890b-b02ff640e9e1",
+      "name": "handle_testcases",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 12,
+      "end_line": 32,
+      "raw_source": "def handle_testcases():\r\n    data = request.get_json()\r\n    if not data:\r\n        return jsonify({\"error\": \"Missing JSON body\"}), 400\r\n    try:\r\n        body = TestCaseRequest.model_validate(data)\r\n        resp = run_testcases(body)\r\n\r\n        # --- MANUAL PROJECT MEMORY LINK ---\r\n        if body.project_id:\r\n            req = RequestLog(route=request.path, project_id=body.project_id, body_json=json.dumps(data))\r\n            db.session.add(req)\r\n            db.session.flush()\r\n            res = ",
+      "kind": "function",
+      "metadata": {},
+      "parameters": [],
+      "return_type": null,
+      "calls": [
+        "request.get_json",
+        "jsonify",
+        "TestCaseRequest.model_validate",
+        "run_testcases",
+        "RequestLog",
+        "json.dumps",
+        "db.session.add",
+        "db.session.flush",
+        "ResponseLog",
+        "resp.model_dump",
+        "db.session.commit",
+        "db.session.rollback",
+        "str"
+      ],
+      "docstring": null,
+      "is_async": false
+    },
+    {
+      "id": "55dec5cd-8913-55b6-ba04-50616c639cde",
+      "name": "from app.core.docs import api as docs, USE_DOCS",
+      "language": "python",
+      "file_path": "app\\apis\\testcases.py",
+      "start_line": 35,
+      "end_line": 35,
+      "raw_source": "from app.core.docs import api as docs, USE_DOCS",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from app.core.docs import api as docs, USE_DOCS",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "a116f21f-bed0-5c2f-9257-937698ffb2a3",
+      "name": "app\\core\\schemas.py",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 1,
+      "end_line": 268,
+      "raw_source": "",
+      "kind": "file",
+      "metadata": {},
+      "loc": 268
+    },
+    {
+      "id": "a9bbd56e-2260-51e6-896d-d8878d4f4e3a",
+      "name": "from pydantic import BaseModel, Field, EmailStr",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 1,
+      "end_line": 1,
+      "raw_source": "from pydantic import BaseModel, Field, EmailStr",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from pydantic import BaseModel, Field, EmailStr",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "2fba167a-8a88-5c17-87a4-3f52065cfc18",
+      "name": "from typing import List, Literal, Optional, Dict, Any",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 2,
+      "end_line": 2,
+      "raw_source": "from typing import List, Literal, Optional, Dict, Any",
+      "kind": "import",
+      "metadata": {},
+      "source_module": "from typing import List, Literal, Optional, Dict, Any",
+      "resolved_path": null,
+      "imported_names": []
+    },
+    {
+      "id": "c901ea71-deac-5cb0-b6ef-6b34c56ac20c",
+      "name": "AuthRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 7,
+      "end_line": 9,
+      "raw_source": "class AuthRequest(BaseModel):\r\n    email: EmailStr\r\n    password: str = Field(..., min_length=6, description=\"Password must be at least 6 characters\")",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "ffcbf364-6c36-5a1a-9824-c7b6a1fa88b4",
+      "name": "AuthResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 11,
+      "end_line": 15,
+      "raw_source": "class AuthResponse(BaseModel):\r\n    token: str\r\n    user_id: int\r\n    email: str\r\n    message: str",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "bc52a11b-8014-5afb-aa84-fc681f22cbd1",
+      "name": "TradeoffRow",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 20,
+      "end_line": 25,
+      "raw_source": "class TradeoffRow(BaseModel):\r\n    criterion: str\r\n    option_a: str\r\n    option_b: str\r\n    verdict: Literal[\"A\", \"B\", \"Tie\", \"Insufficient Data\"]\r\n    notes: str = \"\"",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "019e3bf4-f841-5ebb-a079-188d60756cae",
+      "name": "TradeoffRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 27,
+      "end_line": 33,
+      "raw_source": "class TradeoffRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    option_a: str\r\n    option_b: str\r\n    criteria: List[str]\r\n    constraints: List[str] = []\r\n    ",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "511edf4f-696b-5737-86a3-bf846c4e62f0",
+      "name": "TradeoffResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 35,
+      "end_line": 43,
+      "raw_source": "class TradeoffResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    generated_at: str\r\n    trace_id: str\r\n    context: Dict[str, str]\r\n    criteria: List[str]\r\n    matrix: List[TradeoffRow]\r\n    summary",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "81220eba-60f8-513b-b72a-873e85a59c5a",
+      "name": "ReviewRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 48,
+      "end_line": 52,
+      "raw_source": "class ReviewRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    document: str\r\n    quality_goals: List[str]\r\n    checklists: List[str] = []",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "59509509-e2a4-5273-bac8-d2e0ceb2330f",
+      "name": "RiskItem",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 54,
+      "end_line": 59,
+      "raw_source": "class RiskItem(BaseModel):\r\n    area: str\r\n    severity: Literal[\"Low\",\"Medium\",\"High\",\"Critical\"]\r\n    likelihood: Literal[\"Low\",\"Medium\",\"High\"]\r\n    impact: str\r\n    mitigation: str",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "98d9c28b-6cad-54d6-8ca6-c5054328b8ce",
+      "name": "ReviewResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 61,
+      "end_line": 67,
+      "raw_source": "class ReviewResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    summary: str\r\n    risks: List[RiskItem] = []\r\n    action_items: List[str] = []\r\n    trace_id: str\r\n    generated_at: str",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "d00bbbde-170e-5370-899b-531bf311c480",
+      "name": "RiskRow",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 72,
+      "end_line": 81,
+      "raw_source": "class RiskRow(BaseModel):\r\n    risk_id: str\r\n    category: str\r\n    description: str\r\n    likelihood: int  # 1..3\r\n    impact: int      # 1..4\r\n    score: int       # likelihood * impact\r\n    mitigati",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "00579da3-b0d3-5bbe-9d23-224a23e0a01c",
+      "name": "RiskRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 83,
+      "end_line": 87,
+      "raw_source": "class RiskRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    design: str\r\n    non_functionals: List[str] = []\r\n    constraints: List[str] = []",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "dac3521c-726c-501b-8eff-1197bd554402",
+      "name": "RiskResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 89,
+      "end_line": 94,
+      "raw_source": "class RiskResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    summary: str\r\n    risks: List[RiskRow]",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "71bad96f-0d3a-5ed8-b37e-1acda61c6872",
+      "name": "TestCase",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 99,
+      "end_line": 107,
+      "raw_source": "class TestCase(BaseModel):\r\n    id: str\r\n    title: str\r\n    given: str\r\n    when: str\r\n    then: str\r\n    priority: Literal[\"Low\", \"Medium\", \"High\"] = \"Medium\"\r\n    type: Literal[\"Positive\", \"Negativ",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "2f096d37-b2e3-5229-9373-68ffc9f8f79c",
+      "name": "TestCaseRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 109,
+      "end_line": 115,
+      "raw_source": "class TestCaseRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    user_story: Optional[str] = None\r\n    function_signature: Optional[str] = None\r\n    non_function",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "347a9a1e-9fa2-5d02-8146-70e326d8fa7c",
+      "name": "TestCaseResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 117,
+      "end_line": 122,
+      "raw_source": "class TestCaseResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    summary: str\r\n    cases: List[TestCase]",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "a82dfa9d-1233-5633-ad23-ffc469a5fc47",
+      "name": "DesignSuggestRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 127,
+      "end_line": 132,
+      "raw_source": "class DesignSuggestRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    problem: str = Field(..., description=\"Short description of the problem/domain\")\r\n    quali",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "bfb3c3d5-bc7a-5a1c-8b58-db719c9c5318",
+      "name": "DesignOption",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 134,
+      "end_line": 143,
+      "raw_source": "class DesignOption(BaseModel):\r\n    name: str\r\n    when_to_use: str\r\n    key_components: List[str] = Field(default_factory=list)\r\n    pros: List[str] = Field(default_factory=list)\r\n    cons: List[str]",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "13bb8a39-9a66-5601-b7db-9e345ef7fb38",
+      "name": "DesignSuggestResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 145,
+      "end_line": 151,
+      "raw_source": "class DesignSuggestResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    summary: str\r\n    options: List[DesignOption] = Field(default_factory=list)\r\n    recomm",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "9d935f6c-2ffe-562f-8b7d-1e04d2f24324",
+      "name": "TechSuggestion",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 156,
+      "end_line": 159,
+      "raw_source": "class TechSuggestion(BaseModel):\r\n    category: str \r\n    options: List[str]\r\n    reasoning: str",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "6acd33f7-456c-5485-96b8-c895d7a07113",
+      "name": "PerfFinding",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 161,
+      "end_line": 165,
+      "raw_source": "class PerfFinding(BaseModel):\r\n    attribute: str\r\n    score: int\r\n    issues: List[str]\r\n    suggestions: List[str]",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "7673ca50-4017-5b9a-af6c-d0b770721766",
+      "name": "ReferenceComparison",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 167,
+      "end_line": 170,
+      "raw_source": "class ReferenceComparison(BaseModel):\r\n    matched: List[str]\r\n    missing: List[str]\r\n    improvements: List[str]",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "88c23fe4-9851-519e-b98b-889703e7b6f9",
+      "name": "TechStackRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 172,
+      "end_line": 176,
+      "raw_source": "class TechStackRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    architecture: str = Field(..., description=\"User-provided architecture description\")\r\n    quali",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "b541fe17-01af-5d9b-998b-3d7a750f3ea5",
+      "name": "TechStackResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 178,
+      "end_line": 185,
+      "raw_source": "class TechStackResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    summary: str\r\n    performance_review: List[PerfFinding]\r\n    tech_recommendations: List[Tec",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "d418d54a-7eb4-5509-9d7c-ad5e816464d1",
+      "name": "Finding",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 190,
+      "end_line": 194,
+      "raw_source": "class Finding(BaseModel):\r\n    line: Optional[int] = Field(None, description=\"The line number where the issue was found.\")\r\n    type: Literal[\"SECURITY_ERROR\", \"DESIGN_WARNING\", \"STYLE_VIOLATION\"]\r\n  ",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "2d1fa464-b1f8-50c7-8e19-9b5738adcede",
+      "name": "ComplianceRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 196,
+      "end_line": 200,
+      "raw_source": "class ComplianceRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    code_snippet: str = Field(..., description=\"The code snippet to analyze.\")\r\n    language: str ",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "d14776ff-9ee8-5f8f-886b-81d298a5ca8e",
+      "name": "ComplianceResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 202,
+      "end_line": 208,
+      "raw_source": "class ComplianceResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    overall_score: int = Field(..., description=\"Overall compliance score out of 100.\")\r\n    s",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "7fe972b0-a3a7-5a76-b089-f58b023c4360",
+      "name": "GenerationRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 213,
+      "end_line": 218,
+      "raw_source": "class GenerationRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    prompt: str = Field(..., description=\"Description of the code required.\")\r\n    language: str =",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "de521fd7-9dec-5497-ab3e-87f75b35aa17",
+      "name": "GenerationResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 220,
+      "end_line": 226,
+      "raw_source": "class GenerationResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    generated_code: str = Field(..., description=\"The generated code.\")\r\n    explanation: str ",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "cd2fb08c-fcb6-5544-9392-ac3605c9a4eb",
+      "name": "IssueFinding",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 231,
+      "end_line": 234,
+      "raw_source": "class IssueFinding(BaseModel):\r\n    category: Literal[\"Bug\", \"Bottleneck\", \"Logic Error\", \"Security Flaw\"]\r\n    location: str = Field(..., description=\"Filename:line or function.\")\r\n    description: s",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "7bc40dc8-2e72-57c0-9b74-593ce33771e3",
+      "name": "DebugRequest",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 236,
+      "end_line": 241,
+      "raw_source": "class DebugRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    failing_code: str = Field(..., description=\"Code causing the issue.\")\r\n    traceback: Optional[str]",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "c7a09565-8ba2-5372-bc1b-e6f53cba2f5a",
+      "name": "DebugResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 243,
+      "end_line": 250,
+      "raw_source": "class DebugResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    root_cause_summary: str = Field(..., description=\"Summary of the cause.\")\r\n    findings: List[I",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "fe33d957-c0a7-5c7f-9059-c6bb3382b7c3",
+      "name": "ProjectCreate",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 255,
+      "end_line": 257,
+      "raw_source": "class ProjectCreate(BaseModel):\r\n    name: str = Field(..., min_length=1, description=\"Name of the new project\")\r\n    description: Optional[str] = Field(None, description=\"Optional description\")",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "5c8d5c4c-f231-5428-a922-c283af275a54",
+      "name": "ProjectResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 259,
+      "end_line": 264,
+      "raw_source": "class ProjectResponse(BaseModel):\r\n    id: int\r\n    name: str\r\n    user_id: int\r\n    description: Optional[str]\r\n    created_at: str",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
+    },
+    {
+      "id": "55a63a3a-4926-5fad-827a-e7d205eb09b8",
+      "name": "ProjectListResponse",
+      "language": "python",
+      "file_path": "app\\core\\schemas.py",
+      "start_line": 266,
+      "end_line": 268,
+      "raw_source": "class ProjectListResponse(BaseModel):\r\n    count: int\r\n    projects: List[ProjectResponse]",
+      "kind": "class",
+      "metadata": {},
+      "bases": [
+        "BaseModel"
+      ],
+      "methods": [],
+      "docstring": null
     },
     {
       "id": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
@@ -4298,172 +4974,64 @@
       "imported_names": []
     },
     {
-      "id": "51ce957c-cab7-5d24-8f75-7e8dd62347ea",
-      "name": "app\\apis\\tradeoff.py",
+      "id": "457a8e95-c2c1-53f8-bbeb-19bf18c0cd63",
+      "name": "app\\core\\docs.py",
       "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
+      "file_path": "app\\core\\docs.py",
       "start_line": 1,
-      "end_line": 41,
+      "end_line": 21,
       "raw_source": "",
       "kind": "file",
       "metadata": {},
-      "loc": 41
+      "loc": 21
     },
     {
-      "id": "226fddd8-4e69-52e2-b132-c5217bcdefeb",
-      "name": "import os, json",
+      "id": "0d2ec3a1-c76a-5a21-9818-59c4a703b373",
+      "name": "from spectree import SpecTree",
       "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
+      "file_path": "app\\core\\docs.py",
       "start_line": 1,
       "end_line": 1,
-      "raw_source": "import os, json",
+      "raw_source": "from spectree import SpecTree",
       "kind": "import",
       "metadata": {},
-      "source_module": "import os, json",
+      "source_module": "from spectree import SpecTree",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "6a4926c3-938e-5ba1-b018-c37648264709",
-      "name": "from flask import Blueprint, request, jsonify, g",
+      "id": "012dc632-af25-51da-8c18-8f5a7e6212a7",
+      "name": "from pydantic import BaseModel",
       "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
+      "file_path": "app\\core\\docs.py",
       "start_line": 2,
       "end_line": 2,
-      "raw_source": "from flask import Blueprint, request, jsonify, g",
+      "raw_source": "from pydantic import BaseModel",
       "kind": "import",
       "metadata": {},
-      "source_module": "from flask import Blueprint, request, jsonify, g",
+      "source_module": "from pydantic import BaseModel",
       "resolved_path": null,
       "imported_names": []
     },
     {
-      "id": "06494a10-ee3d-5099-9902-95f574236de7",
-      "name": "from app.db import db",
+      "id": "1b15b00d-9dc2-56de-a3c2-12062daccda4",
+      "name": "init_docs",
       "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
-      "start_line": 3,
-      "end_line": 3,
-      "raw_source": "from app.db import db",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.db import db",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "008466b9-5cd9-5988-a680-a645f20aaac4",
-      "name": "from app.models import RequestLog, ResponseLog",
-      "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
-      "start_line": 4,
-      "end_line": 4,
-      "raw_source": "from app.models import RequestLog, ResponseLog",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.models import RequestLog, ResponseLog",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "6a277be7-504e-54b1-81b0-460a13943ddd",
-      "name": "from app.core.schemas import TradeoffRequest, TradeoffResponse",
-      "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
-      "start_line": 5,
-      "end_line": 5,
-      "raw_source": "from app.core.schemas import TradeoffRequest, TradeoffResponse",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.schemas import TradeoffRequest, TradeoffResponse",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "966420c3-951c-5b4b-a57e-588d177ccdbe",
-      "name": "from app.core.llm import run_tradeoff",
-      "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
-      "start_line": 6,
-      "end_line": 6,
-      "raw_source": "from app.core.llm import run_tradeoff",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.llm import run_tradeoff",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "4a1ab05d-6ab2-5181-93be-cb687809d53f",
-      "name": "from spectree import Response",
-      "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
-      "start_line": 7,
-      "end_line": 7,
-      "raw_source": "from spectree import Response",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from spectree import Response",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "18aecbe0-54fe-5796-9a43-42a2d16a5bd1",
-      "name": "handle_tradeoff",
-      "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
-      "start_line": 12,
-      "end_line": 36,
-      "raw_source": "def handle_tradeoff():\r\n    data = request.get_json(silent=True) or {}\r\n    project_id = data.get(\"project_id\")\r\n\r\n    if project_id:\r\n        try:\r\n            req = RequestLog(route=request.path, project_id=int(project_id), body_json=json.dumps(data))\r\n            db.session.add(req)\r\n            db.session.commit()\r\n            g._manual_req_id = req.id\r\n        except Exception:\r\n            db.session.rollback()\r\n\r\n    try:\r\n        body = TradeoffRequest.model_validate(data)\r\n        resp ",
+      "file_path": "app\\core\\docs.py",
+      "start_line": 19,
+      "end_line": 21,
+      "raw_source": "def init_docs(app):\r\n    if USE_DOCS:\r\n        api.register(app)",
       "kind": "function",
       "metadata": {},
-      "parameters": [],
+      "parameters": [
+        "app"
+      ],
       "return_type": null,
       "calls": [
-        "request.get_json",
-        "data.get",
-        "RequestLog",
-        "int",
-        "json.dumps",
-        "db.session.add",
-        "db.session.commit",
-        "db.session.rollback",
-        "TradeoffRequest.model_validate",
-        "run_tradeoff",
-        "hasattr",
-        "ResponseLog",
-        "resp.model_dump",
-        "jsonify",
-        "str"
+        "api.register"
       ],
       "docstring": null,
       "is_async": false
-    },
-    {
-      "id": "f03b00a8-16a4-5b63-99f9-bd77034fb1ae",
-      "name": "from app.core.docs import api as docs, USE_DOCS",
-      "language": "python",
-      "file_path": "app\\apis\\tradeoff.py",
-      "start_line": 39,
-      "end_line": 39,
-      "raw_source": "from app.core.docs import api as docs, USE_DOCS",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from app.core.docs import api as docs, USE_DOCS",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "71d03d7a-dcf9-52fa-b560-b902d7e1951f",
-      "name": "app\\apis\\__init__.py",
-      "language": "python",
-      "file_path": "app\\apis\\__init__.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 1
     },
     {
       "id": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
@@ -4597,587 +5165,9 @@
       ],
       "docstring": null,
       "is_async": false
-    },
-    {
-      "id": "a116f21f-bed0-5c2f-9257-937698ffb2a3",
-      "name": "app\\core\\schemas.py",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 1,
-      "end_line": 268,
-      "raw_source": "",
-      "kind": "file",
-      "metadata": {},
-      "loc": 268
-    },
-    {
-      "id": "a9bbd56e-2260-51e6-896d-d8878d4f4e3a",
-      "name": "from pydantic import BaseModel, Field, EmailStr",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 1,
-      "end_line": 1,
-      "raw_source": "from pydantic import BaseModel, Field, EmailStr",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from pydantic import BaseModel, Field, EmailStr",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "2fba167a-8a88-5c17-87a4-3f52065cfc18",
-      "name": "from typing import List, Literal, Optional, Dict, Any",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 2,
-      "end_line": 2,
-      "raw_source": "from typing import List, Literal, Optional, Dict, Any",
-      "kind": "import",
-      "metadata": {},
-      "source_module": "from typing import List, Literal, Optional, Dict, Any",
-      "resolved_path": null,
-      "imported_names": []
-    },
-    {
-      "id": "c901ea71-deac-5cb0-b6ef-6b34c56ac20c",
-      "name": "AuthRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 7,
-      "end_line": 9,
-      "raw_source": "class AuthRequest(BaseModel):\r\n    email: EmailStr\r\n    password: str = Field(..., min_length=6, description=\"Password must be at least 6 characters\")",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "ffcbf364-6c36-5a1a-9824-c7b6a1fa88b4",
-      "name": "AuthResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 11,
-      "end_line": 15,
-      "raw_source": "class AuthResponse(BaseModel):\r\n    token: str\r\n    user_id: int\r\n    email: str\r\n    message: str",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "bc52a11b-8014-5afb-aa84-fc681f22cbd1",
-      "name": "TradeoffRow",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 20,
-      "end_line": 25,
-      "raw_source": "class TradeoffRow(BaseModel):\r\n    criterion: str\r\n    option_a: str\r\n    option_b: str\r\n    verdict: Literal[\"A\", \"B\", \"Tie\", \"Insufficient Data\"]\r\n    notes: str = \"\"",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "019e3bf4-f841-5ebb-a079-188d60756cae",
-      "name": "TradeoffRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 27,
-      "end_line": 33,
-      "raw_source": "class TradeoffRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    option_a: str\r\n    option_b: str\r\n    criteria: List[str]\r\n    constraints: List[str] = []\r\n    ",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "511edf4f-696b-5737-86a3-bf846c4e62f0",
-      "name": "TradeoffResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 35,
-      "end_line": 43,
-      "raw_source": "class TradeoffResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    generated_at: str\r\n    trace_id: str\r\n    context: Dict[str, str]\r\n    criteria: List[str]\r\n    matrix: List[TradeoffRow]\r\n    summary",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "81220eba-60f8-513b-b72a-873e85a59c5a",
-      "name": "ReviewRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 48,
-      "end_line": 52,
-      "raw_source": "class ReviewRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    document: str\r\n    quality_goals: List[str]\r\n    checklists: List[str] = []",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "59509509-e2a4-5273-bac8-d2e0ceb2330f",
-      "name": "RiskItem",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 54,
-      "end_line": 59,
-      "raw_source": "class RiskItem(BaseModel):\r\n    area: str\r\n    severity: Literal[\"Low\",\"Medium\",\"High\",\"Critical\"]\r\n    likelihood: Literal[\"Low\",\"Medium\",\"High\"]\r\n    impact: str\r\n    mitigation: str",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "98d9c28b-6cad-54d6-8ca6-c5054328b8ce",
-      "name": "ReviewResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 61,
-      "end_line": 67,
-      "raw_source": "class ReviewResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    summary: str\r\n    risks: List[RiskItem] = []\r\n    action_items: List[str] = []\r\n    trace_id: str\r\n    generated_at: str",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "d00bbbde-170e-5370-899b-531bf311c480",
-      "name": "RiskRow",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 72,
-      "end_line": 81,
-      "raw_source": "class RiskRow(BaseModel):\r\n    risk_id: str\r\n    category: str\r\n    description: str\r\n    likelihood: int  # 1..3\r\n    impact: int      # 1..4\r\n    score: int       # likelihood * impact\r\n    mitigati",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "00579da3-b0d3-5bbe-9d23-224a23e0a01c",
-      "name": "RiskRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 83,
-      "end_line": 87,
-      "raw_source": "class RiskRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    design: str\r\n    non_functionals: List[str] = []\r\n    constraints: List[str] = []",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "dac3521c-726c-501b-8eff-1197bd554402",
-      "name": "RiskResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 89,
-      "end_line": 94,
-      "raw_source": "class RiskResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    summary: str\r\n    risks: List[RiskRow]",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "71bad96f-0d3a-5ed8-b37e-1acda61c6872",
-      "name": "TestCase",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 99,
-      "end_line": 107,
-      "raw_source": "class TestCase(BaseModel):\r\n    id: str\r\n    title: str\r\n    given: str\r\n    when: str\r\n    then: str\r\n    priority: Literal[\"Low\", \"Medium\", \"High\"] = \"Medium\"\r\n    type: Literal[\"Positive\", \"Negativ",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "2f096d37-b2e3-5229-9373-68ffc9f8f79c",
-      "name": "TestCaseRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 109,
-      "end_line": 115,
-      "raw_source": "class TestCaseRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    user_story: Optional[str] = None\r\n    function_signature: Optional[str] = None\r\n    non_function",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "347a9a1e-9fa2-5d02-8146-70e326d8fa7c",
-      "name": "TestCaseResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 117,
-      "end_line": 122,
-      "raw_source": "class TestCaseResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    summary: str\r\n    cases: List[TestCase]",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "a82dfa9d-1233-5633-ad23-ffc469a5fc47",
-      "name": "DesignSuggestRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 127,
-      "end_line": 132,
-      "raw_source": "class DesignSuggestRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    problem: str = Field(..., description=\"Short description of the problem/domain\")\r\n    quali",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "bfb3c3d5-bc7a-5a1c-8b58-db719c9c5318",
-      "name": "DesignOption",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 134,
-      "end_line": 143,
-      "raw_source": "class DesignOption(BaseModel):\r\n    name: str\r\n    when_to_use: str\r\n    key_components: List[str] = Field(default_factory=list)\r\n    pros: List[str] = Field(default_factory=list)\r\n    cons: List[str]",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "13bb8a39-9a66-5601-b7db-9e345ef7fb38",
-      "name": "DesignSuggestResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 145,
-      "end_line": 151,
-      "raw_source": "class DesignSuggestResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    summary: str\r\n    options: List[DesignOption] = Field(default_factory=list)\r\n    recomm",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "9d935f6c-2ffe-562f-8b7d-1e04d2f24324",
-      "name": "TechSuggestion",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 156,
-      "end_line": 159,
-      "raw_source": "class TechSuggestion(BaseModel):\r\n    category: str \r\n    options: List[str]\r\n    reasoning: str",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "6acd33f7-456c-5485-96b8-c895d7a07113",
-      "name": "PerfFinding",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 161,
-      "end_line": 165,
-      "raw_source": "class PerfFinding(BaseModel):\r\n    attribute: str\r\n    score: int\r\n    issues: List[str]\r\n    suggestions: List[str]",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "7673ca50-4017-5b9a-af6c-d0b770721766",
-      "name": "ReferenceComparison",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 167,
-      "end_line": 170,
-      "raw_source": "class ReferenceComparison(BaseModel):\r\n    matched: List[str]\r\n    missing: List[str]\r\n    improvements: List[str]",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "88c23fe4-9851-519e-b98b-889703e7b6f9",
-      "name": "TechStackRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 172,
-      "end_line": 176,
-      "raw_source": "class TechStackRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    architecture: str = Field(..., description=\"User-provided architecture description\")\r\n    quali",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "b541fe17-01af-5d9b-998b-3d7a750f3ea5",
-      "name": "TechStackResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 178,
-      "end_line": 185,
-      "raw_source": "class TechStackResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    summary: str\r\n    performance_review: List[PerfFinding]\r\n    tech_recommendations: List[Tec",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "d418d54a-7eb4-5509-9d7c-ad5e816464d1",
-      "name": "Finding",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 190,
-      "end_line": 194,
-      "raw_source": "class Finding(BaseModel):\r\n    line: Optional[int] = Field(None, description=\"The line number where the issue was found.\")\r\n    type: Literal[\"SECURITY_ERROR\", \"DESIGN_WARNING\", \"STYLE_VIOLATION\"]\r\n  ",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "2d1fa464-b1f8-50c7-8e19-9b5738adcede",
-      "name": "ComplianceRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 196,
-      "end_line": 200,
-      "raw_source": "class ComplianceRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    code_snippet: str = Field(..., description=\"The code snippet to analyze.\")\r\n    language: str ",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "d14776ff-9ee8-5f8f-886b-81d298a5ca8e",
-      "name": "ComplianceResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 202,
-      "end_line": 208,
-      "raw_source": "class ComplianceResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    overall_score: int = Field(..., description=\"Overall compliance score out of 100.\")\r\n    s",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "7fe972b0-a3a7-5a76-b089-f58b023c4360",
-      "name": "GenerationRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 213,
-      "end_line": 218,
-      "raw_source": "class GenerationRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    prompt: str = Field(..., description=\"Description of the code required.\")\r\n    language: str =",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "de521fd7-9dec-5497-ab3e-87f75b35aa17",
-      "name": "GenerationResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 220,
-      "end_line": 226,
-      "raw_source": "class GenerationResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    generated_code: str = Field(..., description=\"The generated code.\")\r\n    explanation: str ",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "cd2fb08c-fcb6-5544-9392-ac3605c9a4eb",
-      "name": "IssueFinding",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 231,
-      "end_line": 234,
-      "raw_source": "class IssueFinding(BaseModel):\r\n    category: Literal[\"Bug\", \"Bottleneck\", \"Logic Error\", \"Security Flaw\"]\r\n    location: str = Field(..., description=\"Filename:line or function.\")\r\n    description: s",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "7bc40dc8-2e72-57c0-9b74-593ce33771e3",
-      "name": "DebugRequest",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 236,
-      "end_line": 241,
-      "raw_source": "class DebugRequest(BaseModel):\r\n    project_id: Optional[int] = None # Added for Project Memory\r\n    failing_code: str = Field(..., description=\"Code causing the issue.\")\r\n    traceback: Optional[str]",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "c7a09565-8ba2-5372-bc1b-e6f53cba2f5a",
-      "name": "DebugResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 243,
-      "end_line": 250,
-      "raw_source": "class DebugResponse(BaseModel):\r\n    version: str = \"1.0\"\r\n    trace_id: str\r\n    generated_at: str\r\n    root_cause_summary: str = Field(..., description=\"Summary of the cause.\")\r\n    findings: List[I",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "fe33d957-c0a7-5c7f-9059-c6bb3382b7c3",
-      "name": "ProjectCreate",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 255,
-      "end_line": 257,
-      "raw_source": "class ProjectCreate(BaseModel):\r\n    name: str = Field(..., min_length=1, description=\"Name of the new project\")\r\n    description: Optional[str] = Field(None, description=\"Optional description\")",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "5c8d5c4c-f231-5428-a922-c283af275a54",
-      "name": "ProjectResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 259,
-      "end_line": 264,
-      "raw_source": "class ProjectResponse(BaseModel):\r\n    id: int\r\n    name: str\r\n    user_id: int\r\n    description: Optional[str]\r\n    created_at: str",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
-    },
-    {
-      "id": "55a63a3a-4926-5fad-827a-e7d205eb09b8",
-      "name": "ProjectListResponse",
-      "language": "python",
-      "file_path": "app\\core\\schemas.py",
-      "start_line": 266,
-      "end_line": 268,
-      "raw_source": "class ProjectListResponse(BaseModel):\r\n    count: int\r\n    projects: List[ProjectResponse]",
-      "kind": "class",
-      "metadata": {},
-      "bases": [
-        "BaseModel"
-      ],
-      "methods": [],
-      "docstring": null
     }
   ],
   "edges": [
-    {
-      "source": "73b34c12-78de-5b47-9aab-0c1a47dfa511",
-      "relation": "CONTAINS",
-      "target": "c5f2cc5f-d06f-55c2-98bc-b4bc04e63cd1"
-    },
-    {
-      "source": "73b34c12-78de-5b47-9aab-0c1a47dfa511",
-      "relation": "CONTAINS",
-      "target": "66297b71-838c-5573-b201-29e280901fc3"
-    },
     {
       "source": "57db28b4-fd98-5b9e-9108-6e18050582ff",
       "relation": "CONTAINS",
@@ -5202,6 +5192,96 @@
       "source": "57db28b4-fd98-5b9e-9108-6e18050582ff",
       "relation": "CONTAINS",
       "target": "82a4ddb0-5898-5905-b3d5-28409cc0f4db"
+    },
+    {
+      "source": "73b34c12-78de-5b47-9aab-0c1a47dfa511",
+      "relation": "CONTAINS",
+      "target": "c5f2cc5f-d06f-55c2-98bc-b4bc04e63cd1"
+    },
+    {
+      "source": "73b34c12-78de-5b47-9aab-0c1a47dfa511",
+      "relation": "CONTAINS",
+      "target": "66297b71-838c-5573-b201-29e280901fc3"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "0c2837ea-5b0c-5247-87b8-13baa097a293"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "6aca7859-d023-5428-bf5a-ff2e82f745e8"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "c505a59f-8f14-5d6c-b8a0-e80da202a301"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "c0d7e09b-d31d-50f2-9ef2-f2e8d6c1ccb8"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "756e59f1-82f4-5c8b-b6a8-d098c58ab112"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "c2b1d8e2-4690-54c9-9b5f-4ed2082c5cbd"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "c77a32d3-118d-5b5b-b589-c0e206323c0b"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "14c8344a-89f5-534b-bb57-756269b01215"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "24ebe553-55fa-5739-b53d-8e2950e12ffa"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "814eb9a7-fabe-5b5a-a4a1-c2da23814d2d"
+    },
+    {
+      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
+      "relation": "CONTAINS",
+      "target": "4d3316d4-9b52-5f29-81bd-3fbeab443aa2"
+    },
+    {
+      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
+      "relation": "CONTAINS",
+      "target": "04a92bc5-273e-5945-a504-77eaa463ce72"
+    },
+    {
+      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
+      "relation": "CONTAINS",
+      "target": "0d463cc3-8fef-56e6-b431-8764f5c0b277"
+    },
+    {
+      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
+      "relation": "CONTAINS",
+      "target": "c677868f-d054-5286-8357-6dba091e1095"
+    },
+    {
+      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
+      "relation": "CONTAINS",
+      "target": "e342ecfd-948e-5601-8c59-92d640f082c0"
+    },
+    {
+      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
+      "relation": "CONTAINS",
+      "target": "f36c824d-878c-544c-8f32-7c9ecd73bb59"
     },
     {
       "source": "516e2b2e-8b1a-5896-b2ce-157a6ef0caee",
@@ -5282,121 +5362,6 @@
       "source": "d2fad4b0-ebf0-561e-a3ba-aab815a9ab6b",
       "relation": "CONTAINS",
       "target": "bf03c5ea-9c00-507a-8246-b59d1e22685b"
-    },
-    {
-      "source": "bc62d509-121d-588b-ac51-82505ebf0fa9",
-      "relation": "CONTAINS",
-      "target": "b55961b2-7021-50a6-9556-629f49a9e137"
-    },
-    {
-      "source": "bc62d509-121d-588b-ac51-82505ebf0fa9",
-      "relation": "CONTAINS",
-      "target": "7ca51e7e-6ba2-5f91-add7-d337d4f39fa1"
-    },
-    {
-      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
-      "relation": "CONTAINS",
-      "target": "04a92bc5-273e-5945-a504-77eaa463ce72"
-    },
-    {
-      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
-      "relation": "CONTAINS",
-      "target": "0d463cc3-8fef-56e6-b431-8764f5c0b277"
-    },
-    {
-      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
-      "relation": "CONTAINS",
-      "target": "c677868f-d054-5286-8357-6dba091e1095"
-    },
-    {
-      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
-      "relation": "CONTAINS",
-      "target": "e342ecfd-948e-5601-8c59-92d640f082c0"
-    },
-    {
-      "source": "f1f0eae1-7839-5c93-bbce-b71a506f8dd8",
-      "relation": "CONTAINS",
-      "target": "f36c824d-878c-544c-8f32-7c9ecd73bb59"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "0c2837ea-5b0c-5247-87b8-13baa097a293"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "6aca7859-d023-5428-bf5a-ff2e82f745e8"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "c505a59f-8f14-5d6c-b8a0-e80da202a301"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "c0d7e09b-d31d-50f2-9ef2-f2e8d6c1ccb8"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "756e59f1-82f4-5c8b-b6a8-d098c58ab112"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "c2b1d8e2-4690-54c9-9b5f-4ed2082c5cbd"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "c77a32d3-118d-5b5b-b589-c0e206323c0b"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "14c8344a-89f5-534b-bb57-756269b01215"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "24ebe553-55fa-5739-b53d-8e2950e12ffa"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "814eb9a7-fabe-5b5a-a4a1-c2da23814d2d"
-    },
-    {
-      "source": "c46b0e82-c34a-5ef7-b322-adf630ef0df7",
-      "relation": "CONTAINS",
-      "target": "4d3316d4-9b52-5f29-81bd-3fbeab443aa2"
-    },
-    {
-      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
-      "relation": "CONTAINS",
-      "target": "1a2cfcc2-4dcd-581e-a21e-10f52a3fde0d"
-    },
-    {
-      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
-      "relation": "CONTAINS",
-      "target": "68935925-7b77-5092-bbea-23c3ad83d138"
-    },
-    {
-      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
-      "relation": "CONTAINS",
-      "target": "6f36c29e-931d-5b9f-b607-a35e9a76b06d"
-    },
-    {
-      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
-      "relation": "CONTAINS",
-      "target": "e4b3aa38-dcbc-5f57-8d0a-c51fa48ad388"
-    },
-    {
-      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
-      "relation": "CONTAINS",
-      "target": "a0ae121a-df95-56e8-9b26-6bc46ec793b4"
     },
     {
       "source": "2ded2962-ffd5-5ea8-a27a-ea3f44110df4",
@@ -5589,6 +5554,16 @@
       "target": "3591e447-e8fe-5051-84df-345b94f3325e"
     },
     {
+      "source": "bc62d509-121d-588b-ac51-82505ebf0fa9",
+      "relation": "CONTAINS",
+      "target": "b55961b2-7021-50a6-9556-629f49a9e137"
+    },
+    {
+      "source": "bc62d509-121d-588b-ac51-82505ebf0fa9",
+      "relation": "CONTAINS",
+      "target": "7ca51e7e-6ba2-5f91-add7-d337d4f39fa1"
+    },
+    {
       "source": "d134be49-e209-5e57-b667-40d1d496197e",
       "relation": "CONTAINS",
       "target": "13314ff0-f9e8-5396-aef4-25a7bdbdea02"
@@ -5612,6 +5587,31 @@
       "source": "d134be49-e209-5e57-b667-40d1d496197e",
       "relation": "CONTAINS",
       "target": "f08eede3-f485-5981-82a9-7a828f0ab748"
+    },
+    {
+      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
+      "relation": "CONTAINS",
+      "target": "1a2cfcc2-4dcd-581e-a21e-10f52a3fde0d"
+    },
+    {
+      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
+      "relation": "CONTAINS",
+      "target": "68935925-7b77-5092-bbea-23c3ad83d138"
+    },
+    {
+      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
+      "relation": "CONTAINS",
+      "target": "6f36c29e-931d-5b9f-b607-a35e9a76b06d"
+    },
+    {
+      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
+      "relation": "CONTAINS",
+      "target": "e4b3aa38-dcbc-5f57-8d0a-c51fa48ad388"
+    },
+    {
+      "source": "1c227ba7-61dc-55b5-b006-e8875e150bb2",
+      "relation": "CONTAINS",
+      "target": "a0ae121a-df95-56e8-9b26-6bc46ec793b4"
     },
     {
       "source": "36beb532-260c-5837-bd65-69a9119ce5a9",
@@ -5672,56 +5672,6 @@
       "source": "418556a6-17a6-5188-9645-b4bfb561b264",
       "relation": "CONTAINS",
       "target": "1e905407-9b15-5713-b6a4-3b16f8d88276"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "1e7f8579-73a8-5031-b66c-0a58ad01beaa"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "4903acbc-68e3-5089-bbfc-fbb1989bc120"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "1e93e1d5-d4f1-582b-b695-e8ece5866dab"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "9b45a683-5b15-58bc-8661-1ef4f332ba38"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "a4914e28-575b-5539-ab40-a448aa913397"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "ccb561a6-170c-5af9-ac1b-dc091b412823"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "207e5c08-ad1b-520d-a91f-b0dfc8a13d12"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "644f41f6-9547-546c-8443-26b333fe44ab"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "4fe24611-5873-5f31-9c17-d5ab3b6cd94a"
-    },
-    {
-      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
-      "relation": "CONTAINS",
-      "target": "e97023a9-6d83-5755-a931-d8de2a58ce01"
     },
     {
       "source": "101c4520-40a7-550d-9ad1-c3d208c6f6e5",
@@ -5789,49 +5739,54 @@
       "target": "eb5a9836-5be6-58cc-ae14-b204bdabf4f1"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "015104c6-1910-5ba8-bea1-5451092ec794"
+      "target": "1e7f8579-73a8-5031-b66c-0a58ad01beaa"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "d7d73010-1ad2-588b-ae14-1a2b67dd680a"
+      "target": "4903acbc-68e3-5089-bbfc-fbb1989bc120"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "8aa84667-13f5-574a-a06f-dd9802dd8a09"
+      "target": "1e93e1d5-d4f1-582b-b695-e8ece5866dab"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "d59835b6-1030-5f0f-ab0c-80b8178dcdb0"
+      "target": "9b45a683-5b15-58bc-8661-1ef4f332ba38"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "9bee24f6-6f94-5cd4-8197-b495cc8f9f40"
+      "target": "a4914e28-575b-5539-ab40-a448aa913397"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "e89b13d9-d740-5304-bfb1-d8fa56d11687"
+      "target": "ccb561a6-170c-5af9-ac1b-dc091b412823"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "5738b823-f150-50c1-ae9c-a660a8012e9b"
+      "target": "207e5c08-ad1b-520d-a91f-b0dfc8a13d12"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "21cbb682-4065-54c6-9551-2ae827a2d211"
+      "target": "644f41f6-9547-546c-8443-26b333fe44ab"
     },
     {
-      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
       "relation": "CONTAINS",
-      "target": "6a4a6297-738e-509c-85d0-4562ed40858b"
+      "target": "4fe24611-5873-5f31-9c17-d5ab3b6cd94a"
+    },
+    {
+      "source": "981d98f5-449d-5817-bb07-abb93eaf92c1",
+      "relation": "CONTAINS",
+      "target": "e97023a9-6d83-5755-a931-d8de2a58ce01"
     },
     {
       "source": "4347b9cd-623f-5496-859e-4119c71ff258",
@@ -5939,6 +5894,51 @@
       "target": "278f450f-6d53-5532-bcf1-b6c875f2b8c3"
     },
     {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "015104c6-1910-5ba8-bea1-5451092ec794"
+    },
+    {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "d7d73010-1ad2-588b-ae14-1a2b67dd680a"
+    },
+    {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "8aa84667-13f5-574a-a06f-dd9802dd8a09"
+    },
+    {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "d59835b6-1030-5f0f-ab0c-80b8178dcdb0"
+    },
+    {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "9bee24f6-6f94-5cd4-8197-b495cc8f9f40"
+    },
+    {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "e89b13d9-d740-5304-bfb1-d8fa56d11687"
+    },
+    {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "5738b823-f150-50c1-ae9c-a660a8012e9b"
+    },
+    {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "21cbb682-4065-54c6-9551-2ae827a2d211"
+    },
+    {
+      "source": "7b8546b4-97d1-5871-972c-a6818134d96f",
+      "relation": "CONTAINS",
+      "target": "6a4a6297-738e-509c-85d0-4562ed40858b"
+    },
+    {
       "source": "4e752bc7-25a1-5a50-b955-526e0211a344",
       "relation": "CONTAINS",
       "target": "5c1ab036-5ffe-5691-a594-2148a1201cd5"
@@ -5982,6 +5982,41 @@
       "source": "4e752bc7-25a1-5a50-b955-526e0211a344",
       "relation": "CONTAINS",
       "target": "3f992cf5-5b55-5062-b436-98c5dcd1ec1c"
+    },
+    {
+      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
+      "relation": "CONTAINS",
+      "target": "48d04824-eb3d-5e80-bcf8-cffb3f6803f9"
+    },
+    {
+      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
+      "relation": "CONTAINS",
+      "target": "46d066ac-8d6d-5705-8a7c-2e013bc86d6a"
+    },
+    {
+      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
+      "relation": "CONTAINS",
+      "target": "09c356d8-2348-5764-86fc-176886323560"
+    },
+    {
+      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
+      "relation": "CONTAINS",
+      "target": "0229dabe-6e23-539c-bc8f-e7e82363642e"
+    },
+    {
+      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
+      "relation": "CONTAINS",
+      "target": "e242fd85-12f2-56e5-b4e9-59da97e3cce5"
+    },
+    {
+      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
+      "relation": "CONTAINS",
+      "target": "96271131-b28c-5844-86b0-6ed4c491275d"
+    },
+    {
+      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
+      "relation": "CONTAINS",
+      "target": "57edb18c-1999-5f55-a7f5-99d1cedee01e"
     },
     {
       "source": "ce5512bb-98f0-58e0-8b5f-c01afd6d8c2f",
@@ -6044,116 +6079,6 @@
       "target": "1eb07f03-5b82-5c07-846c-fa69cccde9ac"
     },
     {
-      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
-      "relation": "CONTAINS",
-      "target": "366a811a-878e-502d-9553-8402fe5f4b78"
-    },
-    {
-      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
-      "relation": "CONTAINS",
-      "target": "f1d22a5a-4d95-5e22-bb9d-50a514dc2e03"
-    },
-    {
-      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
-      "relation": "CONTAINS",
-      "target": "53f8a3e2-dc92-5cb3-bfb8-8fc5c1a530fb"
-    },
-    {
-      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
-      "relation": "CONTAINS",
-      "target": "77e14fd1-5964-552e-a101-47dfe4b96e44"
-    },
-    {
-      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
-      "relation": "CONTAINS",
-      "target": "d018c359-b5f0-5c2e-95e2-c40a1f101c22"
-    },
-    {
-      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
-      "relation": "CONTAINS",
-      "target": "1a87a5c6-a7b1-5bef-a7bb-eb6473cd715a"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "bea3df9c-ce11-542c-8392-b296a861fddc"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "61a6d643-37de-5c2f-b2b2-f7229968d488"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "23d3d608-6713-5c0b-a883-06f9591dde72"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "d8a77d28-059d-573e-a611-5404134e0778"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "d551dbbc-1fc2-5dc8-960b-1017d0310422"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "84696bba-1475-5caf-a808-d8be9e8220cf"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "07d8fafb-0f73-583e-aa94-5b05b4f2dec2"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "6e44f9eb-0cf9-563e-890b-b02ff640e9e1"
-    },
-    {
-      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
-      "relation": "CONTAINS",
-      "target": "55dec5cd-8913-55b6-ba04-50616c639cde"
-    },
-    {
-      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
-      "relation": "CONTAINS",
-      "target": "48d04824-eb3d-5e80-bcf8-cffb3f6803f9"
-    },
-    {
-      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
-      "relation": "CONTAINS",
-      "target": "46d066ac-8d6d-5705-8a7c-2e013bc86d6a"
-    },
-    {
-      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
-      "relation": "CONTAINS",
-      "target": "09c356d8-2348-5764-86fc-176886323560"
-    },
-    {
-      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
-      "relation": "CONTAINS",
-      "target": "0229dabe-6e23-539c-bc8f-e7e82363642e"
-    },
-    {
-      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
-      "relation": "CONTAINS",
-      "target": "e242fd85-12f2-56e5-b4e9-59da97e3cce5"
-    },
-    {
-      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
-      "relation": "CONTAINS",
-      "target": "96271131-b28c-5844-86b0-6ed4c491275d"
-    },
-    {
-      "source": "4b81c2e5-a6a9-5bb3-aaf7-8929a9c36581",
-      "relation": "CONTAINS",
-      "target": "57edb18c-1999-5f55-a7f5-99d1cedee01e"
-    },
-    {
       "source": "f87f446c-f76c-5d57-88e2-30a7ef92bda6",
       "relation": "CONTAINS",
       "target": "5e1d6eaf-b96e-5e10-bb2d-34f1489f7487"
@@ -6199,174 +6124,34 @@
       "target": "549668d0-391a-5377-aff9-b13bcf897a3a"
     },
     {
-      "source": "457a8e95-c2c1-53f8-bbeb-19bf18c0cd63",
+      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
       "relation": "CONTAINS",
-      "target": "0d2ec3a1-c76a-5a21-9818-59c4a703b373"
+      "target": "366a811a-878e-502d-9553-8402fe5f4b78"
     },
     {
-      "source": "457a8e95-c2c1-53f8-bbeb-19bf18c0cd63",
+      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
       "relation": "CONTAINS",
-      "target": "012dc632-af25-51da-8c18-8f5a7e6212a7"
+      "target": "f1d22a5a-4d95-5e22-bb9d-50a514dc2e03"
     },
     {
-      "source": "457a8e95-c2c1-53f8-bbeb-19bf18c0cd63",
+      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
       "relation": "CONTAINS",
-      "target": "1b15b00d-9dc2-56de-a3c2-12062daccda4"
+      "target": "53f8a3e2-dc92-5cb3-bfb8-8fc5c1a530fb"
     },
     {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
       "relation": "CONTAINS",
-      "target": "5c18afb8-93d5-5f91-94d4-c59737735b87"
+      "target": "77e14fd1-5964-552e-a101-47dfe4b96e44"
     },
     {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
       "relation": "CONTAINS",
-      "target": "56feb90d-f2d9-59fd-8a68-43b4510cdd79"
+      "target": "d018c359-b5f0-5c2e-95e2-c40a1f101c22"
     },
     {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "source": "aa07fe9a-08a2-5536-a603-d3276e3dd0c4",
       "relation": "CONTAINS",
-      "target": "455ae69d-a6af-5761-823c-9c8ba0d7d44f"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "b307915a-c6aa-50aa-aff5-1e8354d97fa7"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "3b248740-8fe2-5401-93b4-cc3e125a1bc8"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "bbaa8333-7c33-5e49-8397-23f16c159b86"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "386a08ff-9d8f-5bf5-845f-ac587ac2bc40"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "55f911d8-de00-567f-aa6a-3fd9821b8b7b"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "82a35375-b300-5a43-a6fd-1ad8fa644e89"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "1729d21d-cee1-535b-991b-e458606ba409"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "849cb0c0-c526-5b89-b0f9-0493e15909e5"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "291839d1-5ace-5816-89c4-d35cf1aa3c77"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "9ff62388-d183-52b1-a831-0ffc6faefb70"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "a19e491d-010b-5eac-b101-7c4c798b0bd0"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "7e316ad0-e6f6-5e39-ab9c-1e0578d5cf22"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "3f6d6c9b-f8f5-58f8-9fa5-ffe7106b712b"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "0c238310-ed35-5b1c-9d9d-92d031ccc622"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "89b5e5d0-b96f-5e9b-b36c-332e3c6fab89"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "1afcc3bf-3827-5e64-af50-b14e4227639e"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "6f41cbba-4119-5da9-b7bc-5e82c5ff810f"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "b08037fb-4827-559f-83d8-e9ea6fab7e1f"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "ae573b67-7275-53f3-9915-87c60325baf5"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "3e0e7c10-7994-55c3-b417-1e09d619fb4f"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "a421013b-9136-5efa-9801-a0bc348f608a"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "8caa4926-c501-5dc5-9e24-7a746ab9e5ea"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "281e0163-c741-5763-bc30-c04a5561f43f"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "bc1382c2-aeda-5826-94ee-ac55da2edba8"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "609e363d-19f6-55ac-ae09-1c88ac016cd5"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "60aaf8d5-13f5-5b63-8158-5e29899e171f"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "45dff745-f1ea-55a3-8edb-bdb73bc84acb"
-    },
-    {
-      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
-      "relation": "CONTAINS",
-      "target": "6326bd64-c644-5403-9399-d3c5a0480fa0"
+      "target": "1a87a5c6-a7b1-5bef-a7bb-eb6473cd715a"
     },
     {
       "source": "51ce957c-cab7-5d24-8f75-7e8dd62347ea",
@@ -6414,39 +6199,49 @@
       "target": "f03b00a8-16a4-5b63-99f9-bd77034fb1ae"
     },
     {
-      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
       "relation": "CONTAINS",
-      "target": "5af3a743-16d0-560e-9ed2-d75a87cff1bc"
+      "target": "bea3df9c-ce11-542c-8392-b296a861fddc"
     },
     {
-      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
       "relation": "CONTAINS",
-      "target": "54d7cc4a-f0a4-5e13-a456-a6f94586dd2d"
+      "target": "61a6d643-37de-5c2f-b2b2-f7229968d488"
     },
     {
-      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
       "relation": "CONTAINS",
-      "target": "70dbcd5d-161f-51f5-acce-8bc9f1b17ffd"
+      "target": "23d3d608-6713-5c0b-a883-06f9591dde72"
     },
     {
-      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
       "relation": "CONTAINS",
-      "target": "3dfe8e85-384d-59f2-a976-461794470779"
+      "target": "d8a77d28-059d-573e-a611-5404134e0778"
     },
     {
-      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
       "relation": "CONTAINS",
-      "target": "18422a76-aadb-5e07-b10f-2844a99c4a4b"
+      "target": "d551dbbc-1fc2-5dc8-960b-1017d0310422"
     },
     {
-      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
       "relation": "CONTAINS",
-      "target": "111d2e87-c1a2-5814-9364-c1a020bc5cf7"
+      "target": "84696bba-1475-5caf-a808-d8be9e8220cf"
     },
     {
-      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
       "relation": "CONTAINS",
-      "target": "5cbc3f60-3191-5c55-b651-f7cbd303408c"
+      "target": "07d8fafb-0f73-583e-aa94-5b05b4f2dec2"
+    },
+    {
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
+      "relation": "CONTAINS",
+      "target": "6e44f9eb-0cf9-563e-890b-b02ff640e9e1"
+    },
+    {
+      "source": "93503a9d-5cac-5225-b053-35c5ad6b3223",
+      "relation": "CONTAINS",
+      "target": "55dec5cd-8913-55b6-ba04-50616c639cde"
     },
     {
       "source": "a116f21f-bed0-5c2f-9257-937698ffb2a3",
@@ -6624,9 +6419,209 @@
       "target": "55a63a3a-4926-5fad-827a-e7d205eb09b8"
     },
     {
-      "source": "6f36c29e-931d-5b9f-b607-a35e9a76b06d",
-      "relation": "CALLS",
-      "target": "edf12755-ba5e-5a8c-b182-584034ca95e6"
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "5c18afb8-93d5-5f91-94d4-c59737735b87"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "56feb90d-f2d9-59fd-8a68-43b4510cdd79"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "455ae69d-a6af-5761-823c-9c8ba0d7d44f"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "b307915a-c6aa-50aa-aff5-1e8354d97fa7"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "3b248740-8fe2-5401-93b4-cc3e125a1bc8"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "bbaa8333-7c33-5e49-8397-23f16c159b86"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "386a08ff-9d8f-5bf5-845f-ac587ac2bc40"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "55f911d8-de00-567f-aa6a-3fd9821b8b7b"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "82a35375-b300-5a43-a6fd-1ad8fa644e89"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "1729d21d-cee1-535b-991b-e458606ba409"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "849cb0c0-c526-5b89-b0f9-0493e15909e5"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "291839d1-5ace-5816-89c4-d35cf1aa3c77"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "9ff62388-d183-52b1-a831-0ffc6faefb70"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "a19e491d-010b-5eac-b101-7c4c798b0bd0"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "7e316ad0-e6f6-5e39-ab9c-1e0578d5cf22"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "3f6d6c9b-f8f5-58f8-9fa5-ffe7106b712b"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "0c238310-ed35-5b1c-9d9d-92d031ccc622"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "89b5e5d0-b96f-5e9b-b36c-332e3c6fab89"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "1afcc3bf-3827-5e64-af50-b14e4227639e"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "6f41cbba-4119-5da9-b7bc-5e82c5ff810f"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "b08037fb-4827-559f-83d8-e9ea6fab7e1f"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "ae573b67-7275-53f3-9915-87c60325baf5"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "3e0e7c10-7994-55c3-b417-1e09d619fb4f"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "a421013b-9136-5efa-9801-a0bc348f608a"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "8caa4926-c501-5dc5-9e24-7a746ab9e5ea"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "281e0163-c741-5763-bc30-c04a5561f43f"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "bc1382c2-aeda-5826-94ee-ac55da2edba8"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "609e363d-19f6-55ac-ae09-1c88ac016cd5"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "60aaf8d5-13f5-5b63-8158-5e29899e171f"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "45dff745-f1ea-55a3-8edb-bdb73bc84acb"
+    },
+    {
+      "source": "85f2a050-5b86-57b4-ba9e-6b42bf4e9834",
+      "relation": "CONTAINS",
+      "target": "6326bd64-c644-5403-9399-d3c5a0480fa0"
+    },
+    {
+      "source": "457a8e95-c2c1-53f8-bbeb-19bf18c0cd63",
+      "relation": "CONTAINS",
+      "target": "0d2ec3a1-c76a-5a21-9818-59c4a703b373"
+    },
+    {
+      "source": "457a8e95-c2c1-53f8-bbeb-19bf18c0cd63",
+      "relation": "CONTAINS",
+      "target": "012dc632-af25-51da-8c18-8f5a7e6212a7"
+    },
+    {
+      "source": "457a8e95-c2c1-53f8-bbeb-19bf18c0cd63",
+      "relation": "CONTAINS",
+      "target": "1b15b00d-9dc2-56de-a3c2-12062daccda4"
+    },
+    {
+      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "relation": "CONTAINS",
+      "target": "5af3a743-16d0-560e-9ed2-d75a87cff1bc"
+    },
+    {
+      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "relation": "CONTAINS",
+      "target": "54d7cc4a-f0a4-5e13-a456-a6f94586dd2d"
+    },
+    {
+      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "relation": "CONTAINS",
+      "target": "70dbcd5d-161f-51f5-acce-8bc9f1b17ffd"
+    },
+    {
+      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "relation": "CONTAINS",
+      "target": "3dfe8e85-384d-59f2-a976-461794470779"
+    },
+    {
+      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "relation": "CONTAINS",
+      "target": "18422a76-aadb-5e07-b10f-2844a99c4a4b"
+    },
+    {
+      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "relation": "CONTAINS",
+      "target": "111d2e87-c1a2-5814-9364-c1a020bc5cf7"
+    },
+    {
+      "source": "e6dc06d1-c72d-58d3-bfa4-525f7be50a4d",
+      "relation": "CONTAINS",
+      "target": "5cbc3f60-3191-5c55-b651-f7cbd303408c"
     },
     {
       "source": "edf12755-ba5e-5a8c-b182-584034ca95e6",
@@ -6644,6 +6639,11 @@
       "target": "edf12755-ba5e-5a8c-b182-584034ca95e6"
     },
     {
+      "source": "6f36c29e-931d-5b9f-b607-a35e9a76b06d",
+      "relation": "CALLS",
+      "target": "edf12755-ba5e-5a8c-b182-584034ca95e6"
+    },
+    {
       "source": "6a97ae23-e0c0-58b6-828a-4a7f098bda59",
       "relation": "CALLS",
       "target": "edf12755-ba5e-5a8c-b182-584034ca95e6"
@@ -6652,6 +6652,11 @@
       "source": "5731575b-c4c2-514a-aded-49f3ad8377c9",
       "relation": "CALLS",
       "target": "1e905407-9b15-5713-b6a4-3b16f8d88276"
+    },
+    {
+      "source": "eb5a9836-5be6-58cc-ae14-b204bdabf4f1",
+      "relation": "CALLS",
+      "target": "609e363d-19f6-55ac-ae09-1c88ac016cd5"
     },
     {
       "source": "ccb561a6-170c-5af9-ac1b-dc091b412823",
@@ -6674,9 +6679,9 @@
       "target": "207e5c08-ad1b-520d-a91f-b0dfc8a13d12"
     },
     {
-      "source": "eb5a9836-5be6-58cc-ae14-b204bdabf4f1",
+      "source": "278f450f-6d53-5532-bcf1-b6c875f2b8c3",
       "relation": "CALLS",
-      "target": "609e363d-19f6-55ac-ae09-1c88ac016cd5"
+      "target": "281e0163-c741-5763-bc30-c04a5561f43f"
     },
     {
       "source": "6a4a6297-738e-509c-85d0-4562ed40858b",
@@ -6684,14 +6689,14 @@
       "target": "45dff745-f1ea-55a3-8edb-bdb73bc84acb"
     },
     {
-      "source": "278f450f-6d53-5532-bcf1-b6c875f2b8c3",
-      "relation": "CALLS",
-      "target": "281e0163-c741-5763-bc30-c04a5561f43f"
-    },
-    {
       "source": "d3dff1e9-b4d9-5b87-90f8-eceadcfc10cb",
       "relation": "CALLS",
       "target": "ae573b67-7275-53f3-9915-87c60325baf5"
+    },
+    {
+      "source": "57edb18c-1999-5f55-a7f5-99d1cedee01e",
+      "relation": "CALLS",
+      "target": "3f6d6c9b-f8f5-58f8-9fa5-ffe7106b712b"
     },
     {
       "source": "6fb50cc4-575f-5eb7-b0e7-652b30a933d9",
@@ -6714,24 +6719,24 @@
       "target": "9d330b5b-3488-5fd5-8099-258bc4ad56d7"
     },
     {
+      "source": "3a9c1d2a-5f58-50e6-a086-7b0b389c47d4",
+      "relation": "CALLS",
+      "target": "89b5e5d0-b96f-5e9b-b36c-332e3c6fab89"
+    },
+    {
       "source": "1a87a5c6-a7b1-5bef-a7bb-eb6473cd715a",
       "relation": "CALLS",
       "target": "a421013b-9136-5efa-9801-a0bc348f608a"
     },
     {
+      "source": "18aecbe0-54fe-5796-9a43-42a2d16a5bd1",
+      "relation": "CALLS",
+      "target": "a19e491d-010b-5eac-b101-7c4c798b0bd0"
+    },
+    {
       "source": "6e44f9eb-0cf9-563e-890b-b02ff640e9e1",
       "relation": "CALLS",
       "target": "6f41cbba-4119-5da9-b7bc-5e82c5ff810f"
-    },
-    {
-      "source": "57edb18c-1999-5f55-a7f5-99d1cedee01e",
-      "relation": "CALLS",
-      "target": "3f6d6c9b-f8f5-58f8-9fa5-ffe7106b712b"
-    },
-    {
-      "source": "3a9c1d2a-5f58-50e6-a086-7b0b389c47d4",
-      "relation": "CALLS",
-      "target": "89b5e5d0-b96f-5e9b-b36c-332e3c6fab89"
     },
     {
       "source": "9ff62388-d183-52b1-a831-0ffc6faefb70",
@@ -6832,11 +6837,6 @@
       "source": "45dff745-f1ea-55a3-8edb-bdb73bc84acb",
       "relation": "CALLS",
       "target": "849cb0c0-c526-5b89-b0f9-0493e15909e5"
-    },
-    {
-      "source": "18aecbe0-54fe-5796-9a43-42a2d16a5bd1",
-      "relation": "CALLS",
-      "target": "a19e491d-010b-5eac-b101-7c4c798b0bd0"
     }
   ]
 }

@@ -27,6 +27,7 @@ const iconMap = {
 
 export const AgentCard = ({ agent, index = 0 }) => {
   const Icon = iconMap[agent.icon];
+  const padded = String(index + 1).padStart(2, "0");
 
   return (
     <div
@@ -35,11 +36,13 @@ export const AgentCard = ({ agent, index = 0 }) => {
     >
       <div className="agent-card-glow" />
 
+      <span className="agent-index">{padded}</span>
+
       <div className="agent-icon-wrapper">
         {Icon && (
           <Icon
             className="agent-icon"
-            size={32}
+            size={28}
             strokeWidth={1.5}
             aria-hidden="true"
           />
@@ -55,8 +58,7 @@ export const AgentCard = ({ agent, index = 0 }) => {
           <div key={metric.label} className="metric-item">
             <span className="metric-label">{metric.label}</span>
             <span className="metric-value">
-              {metric.value}
-              {metric.unit}
+              {metric.value}{metric.unit}
             </span>
           </div>
         ))}
