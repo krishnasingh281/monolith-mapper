@@ -83,6 +83,7 @@ class Settings:
     CORS_ORIGINS: list[str] = [
         "http://localhost:3000",
         "http://localhost:5173",
+        "https://monolith-mapper.vercel.app",
     ]
 
 settings = Settings()
